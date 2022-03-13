@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.32228.343
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Hydrogen", "Hydrogen\Hydrogen.vcxproj", "{59D8D8D6-CD43-47BD-9A2F-042333538A9E}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Sandbox", "Sandbox\Sandbox.vcxproj", "{D37CC522-33F1-47ED-9EBF-06AC5C0FC542}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{59D8D8D6-CD43-47BD-9A2F-042333538A9E}.Debug|x64.ActiveCfg = Debug|x64
+		{59D8D8D6-CD43-47BD-9A2F-042333538A9E}.Debug|x64.Build.0 = Debug|x64
+		{59D8D8D6-CD43-47BD-9A2F-042333538A9E}.Release|x64.ActiveCfg = Release|x64
+		{59D8D8D6-CD43-47BD-9A2F-042333538A9E}.Release|x64.Build.0 = Release|x64
+		{D37CC522-33F1-47ED-9EBF-06AC5C0FC542}.Debug|x64.ActiveCfg = Debug|x64
+		{D37CC522-33F1-47ED-9EBF-06AC5C0FC542}.Debug|x64.Build.0 = Debug|x64
+		{D37CC522-33F1-47ED-9EBF-06AC5C0FC542}.Release|x64.ActiveCfg = Release|x64
+		{D37CC522-33F1-47ED-9EBF-06AC5C0FC542}.Release|x64.Build.0 = Release|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {382E7B7B-D6FA-4EEC-8118-3D8E2EA3ECBA}
+	EndGlobalSection
+EndGlobal
