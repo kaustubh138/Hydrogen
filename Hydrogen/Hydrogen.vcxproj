@@ -72,25 +72,25 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>$(SolutionDir)Hydrogen\src\Hydrogen;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)Hydrogen\vendor\spdlog\include;$(SolutionDir)Hydrogen\src\Hydrogen;$(IncludePath)</IncludePath>
     <OutDir>$(SolutionDir)bin\$(Configuration)-$(Platform)\$(ProjectName)\</OutDir>
     <IntDir>$(SolutionDir)bin-int\$(Configuration)-$(Platform)\$(ProjectName)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>$(SolutionDir)Hydrogen\src\Hydrogen;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)Hydrogen\vendor\spdlog\include;$(SolutionDir)Hydrogen\src\Hydrogen;$(IncludePath)</IncludePath>
     <OutDir>$(SolutionDir)bin\$(Configuration)-$(Platform)\$(ProjectName)\</OutDir>
     <IntDir>$(SolutionDir)bin-int\$(Configuration)-$(Platform)\$(ProjectName)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>$(SolutionDir)Hydrogen\src\Hydrogen;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)Hydrogen\vendor\spdlog\include;$(SolutionDir)Hydrogen\src\Hydrogen;$(IncludePath)</IncludePath>
     <OutDir>$(SolutionDir)bin\$(Configuration)-$(Platform)\$(ProjectName)\</OutDir>
     <IntDir>$(SolutionDir)bin-int\$(Configuration)-$(Platform)\$(ProjectName)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>$(SolutionDir)Hydrogen\src\Hydrogen;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)Hydrogen\vendor\spdlog\include;$(SolutionDir)Hydrogen\src\Hydrogen;$(IncludePath)</IncludePath>
     <OutDir>$(SolutionDir)bin\$(Configuration)-$(Platform)\$(ProjectName)\</OutDir>
     <IntDir>$(SolutionDir)bin-int\$(Configuration)-$(Platform)\$(ProjectName)\</IntDir>
   </PropertyGroup>
@@ -100,6 +100,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>H2_BUILD_DLL;H2_PLATFORM_WINDOWS;WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>$(SolutionDir)Hydrogen\vendor\spdlog\include;$(SolutionDir)Hydrogen\src\Hydrogen;</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -114,6 +115,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>H2_BUILD_DLL;H2_PLATFORM_WINDOWS;WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>$(SolutionDir)Hydrogen\vendor\spdlog\include;$(SolutionDir)Hydrogen\src\Hydrogen;</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -128,6 +130,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>H2_BUILD_DLL;H2_PLATFORM_WINDOWS;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>$(SolutionDir)Hydrogen\vendor\spdlog\include;$(SolutionDir)Hydrogen\src\Hydrogen;</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -142,6 +145,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>H2_BUILD_DLL;H2_PLATFORM_WINDOWS;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>$(SolutionDir)Hydrogen\vendor\spdlog\include;$(SolutionDir)Hydrogen\src\Hydrogen;</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -151,12 +155,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\Hydrogen\Utils\Logger.hpp" />
     <ClInclude Include="src\Hydrogen\Application\Application.hpp" />
     <ClInclude Include="src\Hydrogen\Core.hpp" />
     <ClInclude Include="src\Hydrogen\EntryPoint.hpp" />
     <ClInclude Include="src\Hydrogen\Hydrogen.hpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Hydrogen\Utils\Logger.cpp" />
     <ClCompile Include="src\Hydrogen\Application\Application.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

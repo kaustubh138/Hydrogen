@@ -5,3 +5,6 @@
 
 // Entry Point 
 #include "EntryPoint.hpp"
+
+// Logger
+#include "Utils/Logger.hpp"
