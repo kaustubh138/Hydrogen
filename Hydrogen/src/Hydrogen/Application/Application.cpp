@@ -1,4 +1,6 @@
 #include "Application.hpp"
+#include "Events/KeyEvent.hpp"
+#include "Utils/Logger.hpp"
 #include <iostream>
 
 namespace Hydrogen
@@ -15,6 +17,7 @@ namespace Hydrogen
 
 	void Application::Run()
 	{
-		std::cout << "Hydrogen Engine" << std::endl;
+		Event::KeyPressed k(11, 0);
+		H2_TRACE(k);
 	}
 }

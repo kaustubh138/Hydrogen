@@ -1,3 +1,2 @@
-call vendor\premake\premake5.exe vs2019
-echo "Finished...."
+call "vendor\premake\premake5.exe" vs2019
 pause
