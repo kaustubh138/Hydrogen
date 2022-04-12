@@ -36,8 +36,8 @@ project "Hydrogen"
 
 		defines
 		{
-			"HZ_PLATFORM_WINDOWS",
-			"HZ_BUILD_DLL"
+			"H2_PLATFORM_WINDOWS",
+			"H2_BUILD_DLL"
 		}
 
 		postbuildcommands
@@ -46,15 +46,15 @@ project "Hydrogen"
 		}
 
 	filter "configurations:Debug"
-		defines "HZ_DEBUG"
+		defines "H2_DEBUG"
 		symbols "On"
 
 	filter "configurations:Release"
-		defines "HZ_RELEASE"
+		defines "H2_RELEASE"
 		optimize "On"
 
 	filter "configurations:Dist"
-		defines "HZ_DIST"
+		defines "H2_DIST"
 		optimize "On"
 
 project "Sandbox"
@@ -89,17 +89,17 @@ project "Sandbox"
 
 		defines
 		{
-			"HZ_PLATFORM_WINDOWS"
+			"H2_PLATFORM_WINDOWS"
 		}
 
 	filter "configurations:Debug"
-		defines "HZ_DEBUG"
+		defines "H2_DEBUG"
 		symbols "On"
 
 	filter "configurations:Release"
-		defines "HZ_RELEASE"
+		defines "H2_RELEASE"
 		optimize "On"
 
 	filter "configurations:Dist"
-		defines "HZ_DIST"
+		defines "H2_DIST"
 		optimize "On" 

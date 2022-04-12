@@ -98,7 +98,7 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>H2_BUILD_DLL;H2_PLATFORM_WINDOWS;WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>H2_DEBUG;H2_BUILD_DLL;H2_PLATFORM_WINDOWS;WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>$(SolutionDir)Hydrogen\vendor\spdlog\include;$(SolutionDir)Hydrogen\src\Hydrogen;</AdditionalIncludeDirectories>
     </ClCompile>
@@ -128,7 +128,7 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>H2_BUILD_DLL;H2_PLATFORM_WINDOWS;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>H2_DEBUG;H2_BUILD_DLL;H2_PLATFORM_WINDOWS;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>$(SolutionDir)Hydrogen\vendor\spdlog\include;$(SolutionDir)Hydrogen\src\Hydrogen;</AdditionalIncludeDirectories>
     </ClCompile>
@@ -155,6 +155,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\Hydrogen\Events\AppEvent.hpp" />
+    <ClInclude Include="src\Hydrogen\Events\Event.hpp" />
+    <ClInclude Include="src\Hydrogen\Events\KeyEvent.hpp" />
+    <ClInclude Include="src\Hydrogen\Events\MouseEvent.hpp" />
+    <ClInclude Include="src\Hydrogen\Events\WindowEvent.hpp" />
     <ClInclude Include="src\Hydrogen\Utils\Logger.hpp" />
     <ClInclude Include="src\Hydrogen\Application\Application.hpp" />
     <ClInclude Include="src\Hydrogen\Core.hpp" />
