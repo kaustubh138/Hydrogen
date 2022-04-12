@@ -7,6 +7,7 @@
 #include <string>
 #include <sstream>
 #include <functional>
+#include <type_traits>
 
 namespace Hydrogen
 {
@@ -64,7 +65,7 @@ namespace Hydrogen
 
 			inline bool BelongsToCategory(EventCategory category) 
 			{
-				return to_underlying(GetEventCategory()) & to_underlying(category);
+				return static_cast<CategoryType>(GetEventCategory()) & to_underlying(category);
 			}
 
 		};
