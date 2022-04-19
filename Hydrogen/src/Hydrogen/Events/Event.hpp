@@ -4,11 +4,6 @@
 
 #include "Core.hpp"
 
-#include <string>
-#include <sstream>
-#include <functional>
-#include <type_traits>
-
 namespace Hydrogen
 {
 	namespace Event

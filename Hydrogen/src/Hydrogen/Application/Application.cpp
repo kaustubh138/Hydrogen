@@ -1,7 +1,8 @@
+#include "pch.hpp"
+
 #include "Application.hpp"
 #include "Events/KeyEvent.hpp"
 #include "Utils/Logger.hpp"
-#include <iostream>
 
 namespace Hydrogen
 {

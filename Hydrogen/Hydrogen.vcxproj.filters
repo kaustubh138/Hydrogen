@@ -45,12 +45,18 @@
     <ClInclude Include="src\Hydrogen\Events\MouseEvent.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\pch\pch.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Hydrogen\Application\Application.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\Hydrogen\Utils\Logger.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\pch\pch.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

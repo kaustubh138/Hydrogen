@@ -18,6 +18,9 @@ project "Hydrogen"
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
 
+	pchheader "pch.hpp"
+	pchsource "pch.cpp"
+
 	files
 	{
 		"%{prj.name}/src/**.hpp",
