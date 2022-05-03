@@ -1,5 +1,6 @@
 workspace "Hydrogen"
 	architecture "x64"
+	startproject "Sandbox"
 
 	configurations
 	{
@@ -19,7 +20,7 @@ project "Hydrogen"
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
 
 	pchheader "pch.hpp"
-	pchsource "pch.cpp"
+	pchsource "${prj.name}/src/pch/pch.cpp"
 
 	files
 	{
@@ -30,11 +31,13 @@ project "Hydrogen"
 	includedirs
 	{
 		"%{prj.name}/vendor/spdlog/include",
-		"{prj.name}/src"
+		"%{prj.name}/src",
+		"%{prj.name}/src/Hydrogen",
+		"%{prj.name}/src/pch"
 	}
 
 	filter "system:windows"
-		cppdialect "C++14"
+		cppdialect "C++17"
 		staticruntime "On"
 		systemversion "latest"
 
@@ -71,7 +74,7 @@ project "Sandbox"
 
 	files
 	{
-		"%{prj.name}/src/**.h",
+		"%{prj.name}/src/**.hpp",
 		"%{prj.name}/src/**.cpp"
 	}
 
