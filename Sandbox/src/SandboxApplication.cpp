@@ -18,7 +18,7 @@ public:
 
 	void OnEvent(Hydrogen::Event::Event& e) override
 	{
-		H2_INFO("Event {0}" , e);
+		// H2_TRACE("{0}", e);
 	}
 };
 

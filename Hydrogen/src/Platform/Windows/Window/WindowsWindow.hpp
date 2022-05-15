@@ -2,7 +2,7 @@
 
 #include "Hydrogen/Window.hpp"
 
-#include "GLFW/glfw3.h"
+struct GLFWwindow;
 
 namespace Hydrogen
 {
@@ -27,8 +27,9 @@ namespace Hydrogen
 		GLFWwindow* m_Window;
 
 	private:
-		virtual void SetGLFWCallbacks();
-	
+		void SetGLFWCallbacks();
+		bool initGLloader();
+
 	public:
 		WindowsWindow(const WindowProps& props);
 		

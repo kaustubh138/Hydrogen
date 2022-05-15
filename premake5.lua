@@ -13,8 +13,10 @@ outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
 IncludeDirs = {}
 IncludeDirs["GLFW"] = "Hydrogen/vendor/GLFW/include"
+IncludeDirs["Glad"] = "Hydrogen/vendor/Glad/include"
 
 include "Hydrogen/vendor/GLFW"
+include "Hydrogen/vendor/Glad"
 
 project "Hydrogen"
 	location "Hydrogen"
@@ -30,6 +32,7 @@ project "Hydrogen"
 	links
 	{
 		"GLFW",
+		"Glad",
 		"opengl32.lib"
 	}
 
@@ -45,7 +48,8 @@ project "Hydrogen"
 		"%{prj.name}/src",
 		"%{prj.name}/src/Hydrogen",
 		"%{prj.name}/src/pch",
-		"%{IncludeDirs.GLFW}"
+		"%{IncludeDirs.GLFW}",
+		"%{IncludeDirs.Glad}"
 	}
 
 	filter "system:windows"

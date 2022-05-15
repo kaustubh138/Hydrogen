@@ -8,6 +8,10 @@
 
 #include "Hydrogen/Utils/Logger.hpp"
 
+#include "glad/glad.h"
+#include "GLFW/glfw3.h"
+
+
 namespace Hydrogen
 {
 	static bool s_GLFWInitialized = false;
@@ -22,6 +26,12 @@ namespace Hydrogen
 		Init(props);
 	}
 
+	bool WindowsWindow::initGLloader()
+	{
+		int success = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
+		return (success == 1);
+	}
+
 	void WindowsWindow::Init(const WindowProps& props)
 	{
 		m_Data = WindowData(props);
@@ -33,11 +43,16 @@ namespace Hydrogen
 			H2_CORE_ASSERT(sucess, "Could not initialize GLFW");
 			s_GLFWInitialized = true;
 		}
-
+		
 		m_Window = glfwCreateWindow(static_cast<int>(m_Data.Width), static_cast<int>(m_Data.Height), m_Data.Title.c_str(), nullptr, nullptr);
 		glfwMakeContextCurrent(m_Window);
 		glfwSetWindowUserPointer(m_Window, &m_Data);
+
+		bool glLoaderStatus = initGLloader();
+		H2_CORE_ASSERT(glLoaderStatus, "Failed to initialize GLAD");
+
 		SetVSync(true);
+		SetGLFWCallbacks();
 	}
 
 	void WindowsWindow::SetGLFWCallbacks()
