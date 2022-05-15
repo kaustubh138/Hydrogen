@@ -3,6 +3,7 @@
 /*Event Specification and Event Dispatcher*/
 
 #include "Core.hpp"
+#include "pch/pch.hpp"
 
 namespace Hydrogen
 {
@@ -23,11 +24,12 @@ namespace Hydrogen
 			: unsigned int
 		{
 			None			= 0,
-			Applicaion		= FLAG(0),
+			Application		= FLAG(0),
 			Input			= FLAG(1),	// Ex. Joystick or Controller
 			Keyboard		= FLAG(2),  
 			Mouse			= FLAG(3),	
 			MouseButton		= FLAG(4),
+			Dummy			= FLAG(99)
 		};
 
 		using CategoryType = std::underlying_type_t<EventCategory>;
@@ -39,7 +41,7 @@ namespace Hydrogen
 			return static_cast<std::underlying_type_t<E>>(e);
 		}
 
-		CategoryType operator|(EventCategory A, EventCategory B)
+		static CategoryType operator|(EventCategory A, EventCategory B)
 		{
 			return (to_underlying(A) | to_underlying(B));
 		}
@@ -63,6 +65,7 @@ namespace Hydrogen
 				return static_cast<CategoryType>(GetEventCategory()) & to_underlying(category);
 			}
 
+			inline bool IsHandled() { return m_Handled; }
 		};
 
 		class EventDispatcher
@@ -80,7 +83,7 @@ namespace Hydrogen
 			{}
 
 			template<typename T>
-			bool Dispatcher(EventFunc<T> func)
+			bool Dispatch(EventFunc<T> func)
 			{
 				if (m_Event.GetEventType() == T::GetStaticType())
 				{

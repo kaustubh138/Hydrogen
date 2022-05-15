@@ -11,6 +11,11 @@ workspace "Hydrogen"
 
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
+IncludeDirs = {}
+IncludeDirs["GLFW"] = "Hydrogen/vendor/GLFW/include"
+
+include "Hydrogen/vendor/GLFW"
+
 project "Hydrogen"
 	location "Hydrogen"
 	kind "SharedLib"
@@ -20,7 +25,13 @@ project "Hydrogen"
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
 
 	pchheader "pch.hpp"
-	pchsource "${prj.name}/src/pch/pch.cpp"
+	pchsource "%{prj.name}/src/pch/pch.cpp"
+
+	links
+	{
+		"GLFW",
+		"opengl32.lib"
+	}
 
 	files
 	{
@@ -33,7 +44,8 @@ project "Hydrogen"
 		"%{prj.name}/vendor/spdlog/include",
 		"%{prj.name}/src",
 		"%{prj.name}/src/Hydrogen",
-		"%{prj.name}/src/pch"
+		"%{prj.name}/src/pch",
+		"%{IncludeDirs.GLFW}"
 	}
 
 	filter "system:windows"
@@ -44,7 +56,8 @@ project "Hydrogen"
 		defines
 		{
 			"H2_PLATFORM_WINDOWS",
-			"H2_BUILD_DLL"
+			"H2_BUILD_DLL",
+			"H2_ENABLE_ASSERTS"
 		}
 
 		postbuildcommands
@@ -54,14 +67,17 @@ project "Hydrogen"
 
 	filter "configurations:Debug"
 		defines "H2_DEBUG"
+		buildoptions "/MDd"
 		symbols "On"
 
 	filter "configurations:Release"
 		defines "H2_RELEASE"
+		buildoptions "/MDd"
 		optimize "On"
 
 	filter "configurations:Dist"
 		defines "H2_DIST"
+		buildoptions "/MDd"
 		optimize "On"
 
 project "Sandbox"
