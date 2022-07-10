@@ -14,9 +14,15 @@ outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 IncludeDirs = {}
 IncludeDirs["GLFW"] = "Hydrogen/vendor/GLFW/include"
 IncludeDirs["Glad"] = "Hydrogen/vendor/Glad/include"
+IncludeDirs["ImGUI"] = "Hydrogen/vendor/ImGUI"
 
-include "Hydrogen/vendor/GLFW"
-include "Hydrogen/vendor/Glad"
+
+group "Dependencies"
+	include "Hydrogen/vendor/GLFW"
+	include "Hydrogen/vendor/Glad"
+	include "Hydrogen/vendor/ImGUI"
+
+group ""
 
 project "Hydrogen"
 	location "Hydrogen"
@@ -33,6 +39,7 @@ project "Hydrogen"
 	{
 		"GLFW",
 		"Glad",
+		"ImGUI",
 		"opengl32.lib"
 	}
 
@@ -47,9 +54,11 @@ project "Hydrogen"
 		"%{prj.name}/vendor/spdlog/include",
 		"%{prj.name}/src",
 		"%{prj.name}/src/Hydrogen",
+		"%{prj.name}/src/Hydrogen/Platform",
 		"%{prj.name}/src/pch",
 		"%{IncludeDirs.GLFW}",
-		"%{IncludeDirs.Glad}"
+		"%{IncludeDirs.Glad}",
+		"%{IncludeDirs.ImGUI}"
 	}
 
 	filter "system:windows"
@@ -81,7 +90,7 @@ project "Hydrogen"
 
 	filter "configurations:Dist"
 		defines "H2_DIST"
-		buildoptions "/MDd"
+		runtime "Release"
 		optimize "On"
 
 project "Sandbox"

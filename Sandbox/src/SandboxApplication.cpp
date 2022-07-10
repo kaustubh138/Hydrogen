@@ -1,6 +1,8 @@
 #include "Hydrogen/Hydrogen.hpp"
 #include "Hydrogen/Layers/Layer.hpp"
 
+#include "ImGui/ImGuiLayer.hpp"
+
 class ExampleLayer
 	: public Hydrogen::Layer
 {
@@ -13,12 +15,12 @@ public:
 
 	void OnUpdate() override
 	{
-		H2_INFO("Layer Update");
+
 	}
 
-	void OnEvent(Hydrogen::Event::Event& e) override
+	void OnEvent(Hydrogen::Events::Event& e) override
 	{
-		// H2_TRACE("{0}", e);
+
 	}
 };
 
@@ -29,6 +31,7 @@ public:
 	Sandbox()
 	{
 		PushLayer(new ExampleLayer());
+		PushLayer(new Hydrogen::ImGuiLayer());
 	}
 
 	~Sandbox()

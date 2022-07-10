@@ -25,8 +25,9 @@ namespace Hydrogen
 
 		virtual unsigned int GetHeight() const = 0;
 		virtual unsigned int GetWidth() const = 0;
-	
-		using EventCallbackFunction = std::function<void(Event::Event&) > ;
+		virtual void* GetNativeWindow() const = 0;
+
+		using EventCallbackFunction = std::function<void(Events::Event&) > ;
 		virtual void SetEventCallback(const EventCallbackFunction& callback) = 0;
 		virtual void SetVSync(bool enabled) = 0;
 		virtual bool IsVSync() const = 0;

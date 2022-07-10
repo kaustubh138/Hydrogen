@@ -11,7 +11,7 @@ namespace Hydrogen
 		std::string Title;
 		unsigned int Width, Height;
 		bool VSync;
-		std::function<void(Event::Event&)> EventCallbackFn;
+		std::function<void(Events::Event&)> EventCallbackFn;
 	
 		WindowData() = default;
 		WindowData(const WindowProps& props)
@@ -19,7 +19,7 @@ namespace Hydrogen
 		{}
 	};
 
-	class WindowsWindow
+	class WWindow
 		: public Window
 	{
 	private:
@@ -31,14 +31,15 @@ namespace Hydrogen
 		bool initGLloader();
 
 	public:
-		WindowsWindow(const WindowProps& props);
+		WWindow(const WindowProps& props);
 		
-		virtual ~WindowsWindow() {};
+		virtual ~WWindow() {};
 
 		void OnUpdate() override;
 
 		inline unsigned int GetHeight() const override { return m_Data.Height; };
 		inline unsigned int GetWidth() const override { return m_Data.Width; };
+		virtual void* GetNativeWindow() const { return m_Window; };
 
 		inline void SetEventCallback(const EventCallbackFunction& callback) override { m_Data.EventCallbackFn = callback; };
 		void SetVSync(bool enabled) override;

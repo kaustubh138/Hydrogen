@@ -7,7 +7,7 @@
 
 namespace Hydrogen
 {
-	namespace Event
+	namespace Events
 	{
 #define FLAG(x) (1 << x)
 

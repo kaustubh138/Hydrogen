@@ -1,10 +1,12 @@
 #include "pch.hpp"
-#include "WindowsWindow.hpp"
+#include "WWindow.hpp"
 
 // Events
 #include "Events/WindowEvent.hpp"
 #include "Events/KeyEvent.hpp"
 #include "Events/MouseEvent.hpp"
+
+#include "Platform/Windows/Input/WInput.hpp"
 
 #include "Hydrogen/Utils/Logger.hpp"
 
@@ -18,22 +20,24 @@ namespace Hydrogen
 
 	Window* Window::Create(const WindowProps& props)
 	{
-		return new WindowsWindow(props);
+		return new WWindow(props);
 	}
 
-	WindowsWindow::WindowsWindow(const WindowProps& props)
+	WWindow::WWindow(const WindowProps& props)
 	{
 		Init(props);
 	}
 
-	bool WindowsWindow::initGLloader()
+	bool WWindow::initGLloader()
 	{
 		int success = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
 		return (success == 1);
 	}
 
-	void WindowsWindow::Init(const WindowProps& props)
+	void WWindow::Init(const WindowProps& props)
 	{
+		Input* s_Instance = new WInput();
+
 		m_Data = WindowData(props);
 		H2_CORE_INFO("Creating Window {0} {1} {2}", m_Data.Title, m_Data.Width, m_Data.Height);
 
@@ -55,7 +59,7 @@ namespace Hydrogen
 		SetGLFWCallbacks();
 	}
 
-	void WindowsWindow::SetGLFWCallbacks()
+	void WWindow::SetGLFWCallbacks()
 	{
 		glfwSetWindowSizeCallback(m_Window, 
 			[](GLFWwindow* window, int width, int height)
@@ -64,7 +68,7 @@ namespace Hydrogen
 				data.Width = width;
 				data.Height = height;
 
-				Event::WindowResizeEvent event(width, height);
+				Events::WindowResizeEvent event(width, height);
 				data.EventCallbackFn(event);
 			}
 		);
@@ -73,7 +77,7 @@ namespace Hydrogen
 			[](GLFWwindow* window)
 			{
 				WindowData& data = *(reinterpret_cast<WindowData*>(glfwGetWindowUserPointer(window)));
-				Event::WindowCloseEvent event;
+				Events::WindowCloseEvent event;
 				data.EventCallbackFn(event);
 			}
 		);
@@ -86,19 +90,19 @@ namespace Hydrogen
 				{
 				case GLFW_PRESS:
 				{
-					Event::KeyPressed event(key, 0);
+					Events::KeyPressed event(key, 0);
 					data.EventCallbackFn(event);
 					break;
 				}
 				case GLFW_RELEASE:
 				{
-					Event::KeyReleased event(key);
+					Events::KeyReleased event(key);
 					data.EventCallbackFn(event);
 					break;
 				}
 				case GLFW_REPEAT:
 				{
-					Event::KeyPressed event(key, 1);
+					Events::KeyPressed event(key, 1);
 					data.EventCallbackFn(event);
 					break;
 				}
@@ -110,7 +114,7 @@ namespace Hydrogen
 			[](GLFWwindow* window, double xoffset, double yoffset)
 			{
 				WindowData& data = *(reinterpret_cast<WindowData*>(glfwGetWindowUserPointer(window)));
-				Event::MouseScrolledEvent event(xoffset, yoffset);
+				Events::MouseScrolledEvent event(xoffset, yoffset);
 				data.EventCallbackFn(event);
 			}
 		);
@@ -119,24 +123,24 @@ namespace Hydrogen
 			[](GLFWwindow* window, double xPos, double yPos)
 			{
 				WindowData& data = *(reinterpret_cast<WindowData*>(glfwGetWindowUserPointer(window)));
-				Event::MouseMovedEvent event(static_cast<float>(xPos), static_cast<float>(yPos));
+				Events::MouseMovedEvent event(static_cast<float>(xPos), static_cast<float>(yPos));
 				data.EventCallbackFn(event);
 			}
 		);
 	}
 
-	void WindowsWindow::Shutdown()
+	void WWindow::Shutdown()
 	{
 		glfwDestroyWindow(m_Window);
 	}
 
-	void WindowsWindow::OnUpdate()
+	void WWindow::OnUpdate()
 	{
 		glfwPollEvents();
 		glfwSwapBuffers(m_Window);
 	}
 
-	void WindowsWindow::SetVSync(bool enabled)
+	void WWindow::SetVSync(bool enabled)
 	{
 		if (enabled) 
 			glfwSwapInterval(1);
@@ -146,7 +150,7 @@ namespace Hydrogen
 		m_Data.VSync = enabled;
 	}
 
-	bool WindowsWindow::IsVSync() const
+	bool WWindow::IsVSync() const
 	{
 		return m_Data.VSync;
 	}

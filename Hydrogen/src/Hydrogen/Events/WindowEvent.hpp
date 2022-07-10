@@ -5,7 +5,7 @@
 
 namespace Hydrogen
 {
-	namespace Event
+	namespace Events
 	{
 		class H2_API WindowResizeEvent
 			: public Event

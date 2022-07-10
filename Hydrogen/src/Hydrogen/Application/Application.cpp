@@ -3,13 +3,18 @@
 #include "Application.hpp"
 #include "Utils/Logger.hpp"
 #include "Events/WindowEvent.hpp"
+#include "Platform/Windows/Input/WInput.hpp"
 
 #include "glad/glad.h"
 
 namespace Hydrogen
 {
+	Application* Application::s_Instance = nullptr;
+
 	Application::Application()
 	{
+		H2_CORE_ASSERT(!s_Instance, "An application instance already exists");
+		s_Instance = this;
 		m_Window = std::unique_ptr<Window>(Window::Create());
 		m_Window->SetEventCallback(std::bind(&Application::OnEvent, this, std::placeholders::_1));
 	}
@@ -22,17 +27,19 @@ namespace Hydrogen
 	void Application::PushLayer(Layer* layer)
 	{
 		m_LayerStack.PushLayer(layer);
+		layer->OnAttach();
 	}
 	
 	void Application::PushOverlay(Layer* overlay)
 	{
 		m_LayerStack.PushOverlay(overlay);
+		overlay->OnAttach();
 	}
 
-	void Application::OnEvent(Event::Event& e)
+	void Application::OnEvent(Events::Event& e)
 	{
-		Event::EventDispatcher Dispatcher(e);
-		Dispatcher.Dispatch<Event::WindowCloseEvent>(std::bind(&Application::OnWindowClose, this, std::placeholders::_1));
+		Events::EventDispatcher Dispatcher(e);
+		Dispatcher.Dispatch<Events::WindowCloseEvent>(std::bind(&Application::OnWindowClose, this, std::placeholders::_1));
 
 		for (auto it = m_LayerStack.end(); it != m_LayerStack.begin(); )
 		{
@@ -52,11 +59,14 @@ namespace Hydrogen
 			for (Layer* l : m_LayerStack)
 				l->OnUpdate();
 
+			auto [x, y] = Input::GetMousePos();
+			H2_CORE_TRACE("Mouse Position: {0}, {1}", x, y);
+
 			m_Window->OnUpdate();
 		}
 	}
 
-	bool Application::OnWindowClose(Event::WindowCloseEvent& e)
+	bool Application::OnWindowClose(Events::WindowCloseEvent& e)
 	{
 		m_Running = false;
 		return true;

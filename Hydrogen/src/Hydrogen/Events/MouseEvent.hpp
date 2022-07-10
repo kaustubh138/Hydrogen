@@ -1,10 +1,10 @@
 #pragma once
-#include "pch.hpp"
+#include "pch/pch.hpp"
 #include "Event.hpp"
 
 namespace Hydrogen
 {
-	namespace Event
+	namespace Events
 	{
 		class H2_API MouseMovedEvent
 			: public Event
@@ -75,6 +75,7 @@ namespace Hydrogen
 		class H2_API MouseButtonPressed
 			: public MouseButtonEvent
 		{
+		public:
 			MouseButtonPressed(int code)
 				: MouseButtonEvent(code)
 			{}
@@ -92,6 +93,7 @@ namespace Hydrogen
 		class H2_API MouseButtonReleased
 			: public MouseButtonEvent
 		{
+		public:
 			MouseButtonReleased(int code)
 				: MouseButtonEvent(code)
 			{}

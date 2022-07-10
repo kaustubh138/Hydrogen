@@ -11,7 +11,7 @@
 
 namespace Hydrogen
 {
-	namespace Event
+	namespace Events
 	{
 		class H2_API KeyEvent
 			: public Event
