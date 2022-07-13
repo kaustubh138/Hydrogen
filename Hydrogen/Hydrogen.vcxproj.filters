@@ -66,7 +66,7 @@
     <ClInclude Include="src\Hydrogen\Hydrogen.hpp">
       <Filter>Hydrogen</Filter>
     </ClInclude>
-    <ClInclude Include="src\Hydrogen\Input.hpp">
+    <ClInclude Include="src\Hydrogen\Input\Input.hpp">
       <Filter>Hydrogen</Filter>
     </ClInclude>
     <ClInclude Include="src\Hydrogen\Layers\Layer.hpp">
@@ -93,6 +93,8 @@
     <ClInclude Include="src\pch\pch.hpp">
       <Filter>pch</Filter>
     </ClInclude>
+    <ClInclude Include="src\Hydrogen\Input\KeyCodes.hpp" />
+    <ClInclude Include="src\Hydrogen\Input\MouseCodes.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Hydrogen\Application\Application.cpp">

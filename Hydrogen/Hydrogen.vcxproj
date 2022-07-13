@@ -160,7 +160,9 @@
     <ClInclude Include="src\Hydrogen\Events\MouseEvent.hpp" />
     <ClInclude Include="src\Hydrogen\Events\WindowEvent.hpp" />
     <ClInclude Include="src\Hydrogen\Hydrogen.hpp" />
-    <ClInclude Include="src\Hydrogen\Input.hpp" />
+    <ClInclude Include="src\Hydrogen\Input\Input.hpp" />
+    <ClInclude Include="src\Hydrogen\Input\KeyCodes.hpp" />
+    <ClInclude Include="src\Hydrogen\Input\MouseCodes.hpp" />
     <ClInclude Include="src\Hydrogen\Layers\Layer.hpp" />
     <ClInclude Include="src\Hydrogen\Layers\LayerStack.hpp" />
     <ClInclude Include="src\Hydrogen\Utils\Logger.hpp" />

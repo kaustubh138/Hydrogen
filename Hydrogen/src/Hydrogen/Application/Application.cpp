@@ -59,9 +59,6 @@ namespace Hydrogen
 			for (Layer* l : m_LayerStack)
 				l->OnUpdate();
 
-			auto [x, y] = Input::GetMousePos();
-			H2_CORE_TRACE("Mouse Position: {0}, {1}", x, y);
-
 			m_Window->OnUpdate();
 		}
 	}
