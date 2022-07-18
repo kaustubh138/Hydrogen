@@ -6,6 +6,8 @@
 #include "Platform/Windows/Input/WInput.hpp"
 
 #include "glad/glad.h"
+#include "Hydrogen/Events/MouseEvent.hpp"
+
 
 namespace Hydrogen
 {
@@ -43,6 +45,7 @@ namespace Hydrogen
 
 		for (auto it = m_LayerStack.end(); it != m_LayerStack.begin(); )
 		{
+			H2_CORE_INFO(e);
 			(*--it)->OnEvent(e);
 			if (e.IsHandled())
 				break;

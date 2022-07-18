@@ -63,10 +63,11 @@ namespace Hydrogen
 		protected:
 			int m_ButtonCode;
 
-		public:
 			MouseButtonEvent(int code)
 				: m_ButtonCode(code)
 			{}
+
+		public:
 
 			inline int GetButtonCode() const { return m_ButtonCode; }
 			EVENT_CATEGORY(EventCategory::Input | EventCategory::MouseButton)

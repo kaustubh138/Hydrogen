@@ -5,6 +5,8 @@
 
 // Events
 #include "Hydrogen/Events/MouseEvent.hpp"
+#include "Hydrogen/Events/KeyEvent.hpp"
+#include "Hydrogen/Events/WindowEvent.hpp"
 
 namespace Hydrogen
 {
@@ -34,6 +36,10 @@ namespace Hydrogen
 		bool onMouseButtonReleasedEvent(MouseButtonReleased& e);
 		bool onMouseMovedEvent(MouseMovedEvent& e);
 		bool onMouseScrolledEvent(MouseScrolledEvent& e);
+		bool onKeyPressedEvent(KeyPressed& e);
+		bool onKeyReleasedEvent(KeyReleased& e);
+		bool onKeyTypedEvent(KeyTyped& e);
+		bool onWindowResizeEvent(WindowResizeEvent& e);
 	};
 }
 

@@ -70,5 +70,22 @@ namespace Hydrogen
 			}
 #endif
 		};
+
+		class H2_API KeyTyped
+			: public KeyEvent
+		{
+		public:
+			KeyTyped(int keycode)
+				: KeyEvent(keycode) {}
+
+			std::string ToString() const override
+			{
+				std::stringstream ss;
+				ss << "KeyTypedEvent: " << m_KeyCode;
+				return ss.str();
+			}
+
+			EVENT_TYPE(KeyTyped)
+		};
 	}
 }

@@ -15,7 +15,7 @@ IncludeDirs = {}
 IncludeDirs["GLFW"] = "Hydrogen/vendor/GLFW/include"
 IncludeDirs["Glad"] = "Hydrogen/vendor/Glad/include"
 IncludeDirs["ImGUI"] = "Hydrogen/vendor/ImGUI"
-
+IncludeDirs["glm"] = "Hydrogen/vendor/glm"
 
 group "Dependencies"
 	include "Hydrogen/vendor/GLFW"
@@ -46,7 +46,9 @@ project "Hydrogen"
 	files
 	{
 		"%{prj.name}/src/**.hpp",
-		"%{prj.name}/src/**.cpp"
+		"%{prj.name}/src/**.cpp",
+		"%{prj.name}/vendor/glm/glm/**.hpp",
+		"%{prj.name}/vendor/glm/glm/**.inl"
 	}
 
 	includedirs
@@ -58,7 +60,8 @@ project "Hydrogen"
 		"%{prj.name}/src/pch",
 		"%{IncludeDirs.GLFW}",
 		"%{IncludeDirs.Glad}",
-		"%{IncludeDirs.ImGUI}"
+		"%{IncludeDirs.ImGUI}",
+		"%{IncludeDirs.glm}"
 	}
 
 	filter "system:windows"

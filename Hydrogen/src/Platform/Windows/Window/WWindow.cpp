@@ -127,6 +127,29 @@ namespace Hydrogen
 				data.EventCallbackFn(event);
 			}
 		);
+
+		glfwSetMouseButtonCallback(m_Window, 
+			[](GLFWwindow* window, int button, int action, int mods)
+			{
+				WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
+
+				switch (action)
+				{
+					case GLFW_PRESS:
+					{
+						Events::MouseButtonPressed event(button);
+						data.EventCallbackFn(event);
+						break;
+					}
+					case GLFW_RELEASE:
+					{
+						Events::MouseButtonReleased event(button);
+						data.EventCallbackFn(event);
+						break;
+					}
+				}
+			}
+		);
 	}
 
 	void WWindow::Shutdown()
