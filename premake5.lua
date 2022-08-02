@@ -18,6 +18,10 @@ IncludeDirs["ImGUI"] = "Hydrogen/vendor/ImGUI"
 IncludeDirs["glm"] = "Hydrogen/vendor/glm"
 
 group "Dependencies"
+	defines {
+		"IMGUI_API = __declspec(dllexport)"
+	}
+
 	include "Hydrogen/vendor/GLFW"
 	include "Hydrogen/vendor/Glad"
 	include "Hydrogen/vendor/ImGUI"
