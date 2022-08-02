@@ -9,7 +9,7 @@ namespace Hydrogen
 	{
 	private:
 		std::vector<Layer*> m_Layers; // Contains all the layer including the overlay layer at the front()
-		std::vector<Layer*>::iterator m_LayerInsert; // Pointer to position before the overlay layer
+		std::size_t m_LayerInsertIdx = 0; // Pointer to position before the overlay layer
 
 	public:
 		LayerStack();

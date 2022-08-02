@@ -6,7 +6,6 @@ namespace Hydrogen
 	LayerStack::LayerStack()
 	{
 		m_Layers.emplace_back(new Layer{});
-		m_LayerInsert = m_Layers.begin();
 	}
 
 	LayerStack::~LayerStack()
@@ -17,7 +16,8 @@ namespace Hydrogen
 
 	void LayerStack::PushLayer(Layer* layer)
 	{
-		m_LayerInsert = m_Layers.emplace(m_LayerInsert, layer);
+		m_Layers.emplace(m_Layers.begin() + m_LayerInsertIdx, layer);
+		m_LayerInsertIdx++;
 	}
 
 	void LayerStack::PopLayer(Layer* layer)
@@ -26,7 +26,7 @@ namespace Hydrogen
 		if (it != m_Layers.end())
 		{
 			m_Layers.erase(it);
-			m_LayerInsert--;
+			m_LayerInsertIdx--;
 		}
 	}
 
