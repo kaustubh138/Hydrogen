@@ -6,6 +6,7 @@
 #include "Hydrogen/Events/WindowEvent.hpp"
 #include "Hydrogen/Window.hpp"
 #include "Layers/LayerStack.hpp"
+#include <ImGui/ImGuiLayer.hpp>
 
 namespace Hydrogen
 {
@@ -15,6 +16,7 @@ namespace Hydrogen
 		static Application* s_Instance;
 
 		std::unique_ptr<Window> m_Window;
+		ImGuiLayer* m_ImGuiLayer;
 		LayerStack m_LayerStack;
 		bool m_Running = true;
 

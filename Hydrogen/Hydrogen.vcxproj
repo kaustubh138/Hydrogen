@@ -79,7 +79,7 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.hpp</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>H2_PLATFORM_WINDOWS;H2_BUILD_DLL;H2_ENABLE_ASSERTS;H2_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>IMGUI_API = __declspec(dllexport);H2_PLATFORM_WINDOWS;H2_BUILD_DLL;H2_ENABLE_ASSERTS;H2_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>vendor\spdlog\include;src;src\Hydrogen;src\Hydrogen\Platform;src\pch;vendor\GLFW\include;vendor\Glad\include;vendor\ImGUI;vendor\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
@@ -102,7 +102,7 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.hpp</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>H2_PLATFORM_WINDOWS;H2_BUILD_DLL;H2_ENABLE_ASSERTS;H2_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>IMGUI_API = __declspec(dllexport);H2_PLATFORM_WINDOWS;H2_BUILD_DLL;H2_ENABLE_ASSERTS;H2_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>vendor\spdlog\include;src;src\Hydrogen;src\Hydrogen\Platform;src\pch;vendor\GLFW\include;vendor\Glad\include;vendor\ImGUI;vendor\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
@@ -129,7 +129,7 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.hpp</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>H2_PLATFORM_WINDOWS;H2_BUILD_DLL;H2_ENABLE_ASSERTS;H2_DIST;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>IMGUI_API = __declspec(dllexport);H2_PLATFORM_WINDOWS;H2_BUILD_DLL;H2_ENABLE_ASSERTS;H2_DIST;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>vendor\spdlog\include;src;src\Hydrogen;src\Hydrogen\Platform;src\pch;vendor\GLFW\include;vendor\Glad\include;vendor\ImGUI;vendor\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
@@ -591,8 +591,8 @@
     <ClCompile Include="src\Hydrogen\Application\Application.cpp" />
     <ClCompile Include="src\Hydrogen\Layers\LayerStack.cpp" />
     <ClCompile Include="src\Hydrogen\Utils\Logger.cpp" />
+    <ClCompile Include="src\ImGui\ImGuiBuild.cpp" />
     <ClCompile Include="src\ImGui\ImGuiLayer.cpp" />
-    <ClCompile Include="src\Platform\OpenGL\imgui_impl_opengl3.cpp" />
     <ClCompile Include="src\Platform\Windows\Input\WInput.cpp" />
     <ClCompile Include="src\Platform\Windows\Window\WWindow.cpp" />
     <ClCompile Include="src\pch\pch.cpp">
