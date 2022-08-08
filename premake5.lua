@@ -19,7 +19,7 @@ IncludeDirs["glm"] = "Hydrogen/vendor/glm"
 
 group "Dependencies"
 	defines {
-		"IMGUI_API = __declspec(dllexport)"
+		"IMGUI_API=__declspec(dllexport)"
 	}
 
 	include "Hydrogen/vendor/GLFW"
@@ -30,14 +30,18 @@ group ""
 
 project "Hydrogen"
 	location "Hydrogen"
-	kind "SharedLib"
+	kind "StaticLib"
 	language "C++"
+	cppdialect "C++17"
+	staticruntime "On"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
 
 	pchheader "pch.hpp"
 	pchsource "%{prj.name}/src/pch/pch.cpp"
+
+	defines "_CRT_SECURE_NO_WARNINGS"
 
 	links
 	{
@@ -70,7 +74,6 @@ project "Hydrogen"
 
 	filter "system:windows"
 		cppdialect "C++17"
-		staticruntime "On"
 		systemversion "latest"
 
 		defines
@@ -80,19 +83,14 @@ project "Hydrogen"
 			"H2_ENABLE_ASSERTS"
 		}
 
-		postbuildcommands
-		{
-			("{COPY} %{cfg.buildtarget.relpath} ../bin/" .. outputdir .. "/Sandbox")
-		}
-
 	filter "configurations:Debug"
 		defines "H2_DEBUG"
-		buildoptions "/MDd"
+		runtime "Debug"
 		symbols "On"
 
 	filter "configurations:Release"
 		defines "H2_RELEASE"
-		buildoptions "/MDd"
+		runtime "Release"
 		optimize "On"
 
 	filter "configurations:Dist"
@@ -104,6 +102,8 @@ project "Sandbox"
 	location "Sandbox"
 	kind "ConsoleApp"
 	language "C++"
+	cppdialect "C++17"
+	staticruntime "On"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
@@ -117,7 +117,8 @@ project "Sandbox"
 	includedirs
 	{
 		"Hydrogen/vendor/spdlog/include",
-		"Hydrogen/src"
+		"Hydrogen/src",
+		"%{IncludeDirs.glm}"
 	}
 
 	links
@@ -126,8 +127,6 @@ project "Sandbox"
 	}
 
 	filter "system:windows"
-		cppdialect "C++17"
-		staticruntime "On"
 		systemversion "latest"
 
 		defines
@@ -137,12 +136,15 @@ project "Sandbox"
 
 	filter "configurations:Debug"
 		defines "H2_DEBUG"
+		runtime "Debug"
 		symbols "On"
 
 	filter "configurations:Release"
 		defines "H2_RELEASE"
+		runtime "Release"
 		optimize "On"
 
 	filter "configurations:Dist"
 		defines "H2_DIST"
+		runtime "Release"
 		optimize "On" 

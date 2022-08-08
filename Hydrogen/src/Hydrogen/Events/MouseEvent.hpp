@@ -35,10 +35,10 @@ namespace Hydrogen
 			: public Event
 		{
 		private:
-			float m_XOffset, m_YOffset;
+			double m_XOffset, m_YOffset;
 
 		public:
-			MouseScrolledEvent(float xOff, float yOff)
+			MouseScrolledEvent(double xOff, double yOff)
 				: m_XOffset(xOff), m_YOffset(yOff)
 			{}
 
@@ -52,8 +52,8 @@ namespace Hydrogen
 			EVENT_TYPE(MouseScrolled)
 			EVENT_CATEGORY(EventCategory::Mouse | EventCategory::Input)
 	
-			inline float GetXOffset() const{ return m_XOffset; }
-			inline float GetYOffset() const{ return m_YOffset; }
+			inline double GetXOffset() const{ return m_XOffset; }
+			inline double GetYOffset() const{ return m_YOffset; }
 		
 		};
 

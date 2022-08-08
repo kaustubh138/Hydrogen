@@ -29,7 +29,7 @@ namespace Hydrogen
 			Keyboard		= FLAG(2),  
 			Mouse			= FLAG(3),	
 			MouseButton		= FLAG(4),
-			Dummy			= FLAG(99)
+			Dummy			= FLAG(9)
 		};
 
 		using CategoryType = std::underlying_type_t<EventCategory>;
