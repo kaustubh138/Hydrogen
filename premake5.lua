@@ -108,10 +108,6 @@ project "Sandbox"
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
 
-	defines {
-		"IMGUI_API = __declspec(dllimport)"
-	}
-
 	files
 	{
 		"%{prj.name}/src/**.hpp",
@@ -121,8 +117,7 @@ project "Sandbox"
 	includedirs
 	{
 		"Hydrogen/vendor/spdlog/include",
-		"Hydrogen/src",
-		"Hydrogen/vendor/ImGUI"
+		"Hydrogen/src"
 	}
 
 	links

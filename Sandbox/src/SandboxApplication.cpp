@@ -2,7 +2,6 @@
 #include "Hydrogen/Layers/Layer.hpp"
 
 #include "ImGui/ImGuiLayer.hpp"
-#include "imgui.h"
 
 class ExampleLayer
 	: public Hydrogen::Layer
@@ -10,13 +9,26 @@ class ExampleLayer
 public:
 	ExampleLayer()
 		: Hydrogen::Layer("Example")
-	{ }
+	{
+
+	}
 
 	void OnUpdate() override
-	{ }
+	{
+		if (Hydrogen::Input::IsKeyPressed(H2_KEY_TAB))
+			H2_TRACE("Tab Pressed");
+	}
 
 	void OnEvent(Hydrogen::Events::Event& e) override
-	{ }
+	{
+		if (e.GetEventType() == Hydrogen::Events::EventType::KeyPressed)
+		{
+			Hydrogen::Events::KeyPressed& key_event = static_cast<Hydrogen::Events::KeyPressed&>(e);
+			if (key_event.GetKeyCode() == H2_KEY_TAB)
+				H2_TRACE("Tab Key Pressed");
+			H2_TRACE("{0}", (char)key_event.GetKeyCode());
+		}
+	}
 };
 
 class Sandbox
@@ -26,6 +38,7 @@ public:
 	Sandbox()
 	{
 		PushLayer(new ExampleLayer());
+		PushLayer(new Hydrogen::ImGuiLayer());
 	}
 
 	~Sandbox()

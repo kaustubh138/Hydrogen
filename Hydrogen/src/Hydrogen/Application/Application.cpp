@@ -19,9 +19,6 @@ namespace Hydrogen
 		s_Instance = this;
 		m_Window = std::unique_ptr<Window>(Window::Create());
 		m_Window->SetEventCallback(std::bind(&Application::OnEvent, this, std::placeholders::_1));
-		
-		m_ImGuiLayer = new ImGuiLayer{};
-		PushOverlay(m_ImGuiLayer);
 	}
 
 	Application::~Application()
@@ -62,10 +59,8 @@ namespace Hydrogen
 			glClearColor(0.0f, 0.1f, 0.0f, 1.0f);
 			glClear(GL_COLOR_BUFFER_BIT);
 			
-			m_ImGuiLayer->Begin();
 			for (Layer* l : m_LayerStack)
-				l->OnImGuiRender();
-			m_ImGuiLayer->End();
+				l->OnUpdate();
 
 			m_Window->OnUpdate();
 		}
