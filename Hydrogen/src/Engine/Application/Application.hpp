@@ -2,9 +2,9 @@
 
 #include "Core.hpp"
 
-#include "Hydrogen/Events/Event.hpp"
-#include "Hydrogen/Events/WindowEvent.hpp"
-#include "Hydrogen/Window.hpp"
+#include "Engine/Events/Event.hpp"
+#include "Engine/Events/WindowEvent.hpp"
+#include "Engine/Window.hpp"
 #include "Layers/LayerStack.hpp"
 
 namespace Hydrogen

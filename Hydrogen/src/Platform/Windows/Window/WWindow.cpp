@@ -8,7 +8,7 @@
 
 #include "Platform/Windows/Input/WInput.hpp"
 
-#include "Hydrogen/Utils/Logger.hpp"
+#include "Engine/Utils/Logger.hpp"
 
 #include "glad/glad.h"
 #include "GLFW/glfw3.h"

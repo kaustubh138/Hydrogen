@@ -1,12 +1,13 @@
 #include "pch.hpp"
 
 #include "Application.hpp"
-#include "Utils/Logger.hpp"
-#include "Events/WindowEvent.hpp"
-#include "Platform/Windows/Input/WInput.hpp"
+#include "Engine/Utils/Logger.hpp"
+#include "Engine/Events/WindowEvent.hpp"
+#include "Engine/Window.hpp"
+#include "Engine/Input/Input.hpp"
 
 #include "glad/glad.h"
-#include "Hydrogen/Events/MouseEvent.hpp"
+#include "Engine/Events/MouseEvent.hpp"
 
 
 namespace Hydrogen

@@ -39,7 +39,7 @@ project "Hydrogen"
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
 
 	pchheader "pch.hpp"
-	pchsource "%{prj.name}/src/pch/pch.cpp"
+	pchsource "%{prj.name}/src/Engine/pch/pch.cpp"
 
 	defines "_CRT_SECURE_NO_WARNINGS"
 
@@ -54,6 +54,7 @@ project "Hydrogen"
 	files
 	{
 		"%{prj.name}/src/**.hpp",
+		"%{prj.name}/src/**.h",
 		"%{prj.name}/src/**.cpp",
 		"%{prj.name}/vendor/glm/glm/**.hpp",
 		"%{prj.name}/vendor/glm/glm/**.inl"
@@ -63,9 +64,9 @@ project "Hydrogen"
 	{
 		"%{prj.name}/vendor/spdlog/include",
 		"%{prj.name}/src",
-		"%{prj.name}/src/Hydrogen",
-		"%{prj.name}/src/Hydrogen/Platform",
-		"%{prj.name}/src/pch",
+		"%{prj.name}/src/Engine",
+		"%{prj.name}/src/Engine/Platform",
+		"%{prj.name}/src/Engine/pch",
 		"%{IncludeDirs.GLFW}",
 		"%{IncludeDirs.Glad}",
 		"%{IncludeDirs.ImGUI}",

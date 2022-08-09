@@ -1,12 +1,12 @@
 #pragma once
 
-#include "Hydrogen/Core.hpp"
-#include "Hydrogen/Layers/Layer.hpp"
+#include "Engine/Core.hpp"
+#include "Engine/Layers/Layer.hpp"
 
 // Events
-#include "Hydrogen/Events/MouseEvent.hpp"
-#include "Hydrogen/Events/KeyEvent.hpp"
-#include "Hydrogen/Events/WindowEvent.hpp"
+#include "Engine/Events/MouseEvent.hpp"
+#include "Engine/Events/KeyEvent.hpp"
+#include "Engine/Events/WindowEvent.hpp"
 
 namespace Hydrogen
 {

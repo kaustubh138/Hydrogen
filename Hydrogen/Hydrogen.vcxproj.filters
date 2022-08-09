@@ -4,26 +4,29 @@
     <Filter Include="src">
       <UniqueIdentifier>{2DAB880B-99B4-887C-2230-9F7C8E38947C}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\Hydrogen">
-      <UniqueIdentifier>{7C4D8972-68B0-1817-1136-51CDFD77E499}</UniqueIdentifier>
+    <Filter Include="src\Engine">
+      <UniqueIdentifier>{12A1320E-FE58-745B-6760-4DB753370F4C}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\Hydrogen\Application">
-      <UniqueIdentifier>{3FA3AA50-2BC8-F9D0-5413-DF604097F8EE}</UniqueIdentifier>
+    <Filter Include="src\Engine\Application">
+      <UniqueIdentifier>{D5079803-C101-C155-AA6E-5766960727C2}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\Hydrogen\Events">
-      <UniqueIdentifier>{E075C926-4CD7-A634-D544-EDE641A5DDF3}</UniqueIdentifier>
+    <Filter Include="src\Engine\Events">
+      <UniqueIdentifier>{B624EAB0-223B-E846-6BB2-7368D707B9CE}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\Hydrogen\Input">
-      <UniqueIdentifier>{7B2ACE75-670E-8FCB-D06E-891EBC71794D}</UniqueIdentifier>
+    <Filter Include="src\Engine\ImGui">
+      <UniqueIdentifier>{BC1B88A8-A814-A7FA-D146-8C7FBD9E8606}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\Hydrogen\Layers">
-      <UniqueIdentifier>{BB60AC35-27C2-8943-B02F-D0F51C90C002}</UniqueIdentifier>
+    <Filter Include="src\Engine\Input">
+      <UniqueIdentifier>{915689A8-7D4F-A8FA-A681-8D7F92D98706}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\Hydrogen\Utils">
-      <UniqueIdentifier>{DC7BAA76-C85F-6BCC-31C0-651F1DC3554E}</UniqueIdentifier>
+    <Filter Include="src\Engine\Layers">
+      <UniqueIdentifier>{910FCDBF-FD25-CB55-469D-5677B2F29BDD}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\ImGui">
-      <UniqueIdentifier>{170E22B3-8378-D629-CCB6-87CF3860B47E}</UniqueIdentifier>
+    <Filter Include="src\Engine\Utils">
+      <UniqueIdentifier>{F2A765A9-DEA0-84FB-07D3-6980F32A6407}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Engine\pch">
+      <UniqueIdentifier>{7C89FC39-6857-F03F-51EB-60663D58CCA4}</UniqueIdentifier>
     </Filter>
     <Filter Include="src\Platform">
       <UniqueIdentifier>{21CA02E5-0D2D-9289-B6B2-CA3FA2F45D0C}</UniqueIdentifier>
@@ -39,9 +42,6 @@
     </Filter>
     <Filter Include="src\Platform\Windows\Window">
       <UniqueIdentifier>{E21DC0DB-4E2B-EEC1-D711-EAAC431EBA78}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\pch">
-      <UniqueIdentifier>{172930A9-8308-AF44-8C20-3A1BF87E15A6}</UniqueIdentifier>
     </Filter>
     <Filter Include="vendor">
       <UniqueIdentifier>{B3738122-9F15-ACF8-88D0-BF4C74113349}</UniqueIdentifier>
@@ -66,65 +66,65 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\Hydrogen\Application\Application.hpp">
-      <Filter>src\Hydrogen\Application</Filter>
+    <ClInclude Include="src\Engine\Application\Application.hpp">
+      <Filter>src\Engine\Application</Filter>
     </ClInclude>
-    <ClInclude Include="src\Hydrogen\Core.hpp">
-      <Filter>src\Hydrogen</Filter>
+    <ClInclude Include="src\Engine\Core.hpp">
+      <Filter>src\Engine</Filter>
     </ClInclude>
-    <ClInclude Include="src\Hydrogen\EntryPoint.hpp">
-      <Filter>src\Hydrogen</Filter>
+    <ClInclude Include="src\Engine\EntryPoint.hpp">
+      <Filter>src\Engine</Filter>
     </ClInclude>
-    <ClInclude Include="src\Hydrogen\Events\AppEvent.hpp">
-      <Filter>src\Hydrogen\Events</Filter>
+    <ClInclude Include="src\Engine\Events\AppEvent.hpp">
+      <Filter>src\Engine\Events</Filter>
     </ClInclude>
-    <ClInclude Include="src\Hydrogen\Events\Event.hpp">
-      <Filter>src\Hydrogen\Events</Filter>
+    <ClInclude Include="src\Engine\Events\Event.hpp">
+      <Filter>src\Engine\Events</Filter>
     </ClInclude>
-    <ClInclude Include="src\Hydrogen\Events\KeyEvent.hpp">
-      <Filter>src\Hydrogen\Events</Filter>
+    <ClInclude Include="src\Engine\Events\KeyEvent.hpp">
+      <Filter>src\Engine\Events</Filter>
     </ClInclude>
-    <ClInclude Include="src\Hydrogen\Events\MouseEvent.hpp">
-      <Filter>src\Hydrogen\Events</Filter>
+    <ClInclude Include="src\Engine\Events\MouseEvent.hpp">
+      <Filter>src\Engine\Events</Filter>
     </ClInclude>
-    <ClInclude Include="src\Hydrogen\Events\WindowEvent.hpp">
-      <Filter>src\Hydrogen\Events</Filter>
+    <ClInclude Include="src\Engine\Events\WindowEvent.hpp">
+      <Filter>src\Engine\Events</Filter>
     </ClInclude>
-    <ClInclude Include="src\Hydrogen\Hydrogen.hpp">
-      <Filter>src\Hydrogen</Filter>
+    <ClInclude Include="src\Engine\Hydrogen.hpp">
+      <Filter>src\Engine</Filter>
     </ClInclude>
-    <ClInclude Include="src\Hydrogen\Input\Input.hpp">
-      <Filter>src\Hydrogen\Input</Filter>
+    <ClInclude Include="src\Engine\ImGui\ImGuiLayer.hpp">
+      <Filter>src\Engine\ImGui</Filter>
     </ClInclude>
-    <ClInclude Include="src\Hydrogen\Input\KeyCodes.hpp">
-      <Filter>src\Hydrogen\Input</Filter>
+    <ClInclude Include="src\Engine\Input\Input.hpp">
+      <Filter>src\Engine\Input</Filter>
     </ClInclude>
-    <ClInclude Include="src\Hydrogen\Input\MouseCodes.hpp">
-      <Filter>src\Hydrogen\Input</Filter>
+    <ClInclude Include="src\Engine\Input\KeyCodes.hpp">
+      <Filter>src\Engine\Input</Filter>
     </ClInclude>
-    <ClInclude Include="src\Hydrogen\Layers\Layer.hpp">
-      <Filter>src\Hydrogen\Layers</Filter>
+    <ClInclude Include="src\Engine\Input\MouseCodes.hpp">
+      <Filter>src\Engine\Input</Filter>
     </ClInclude>
-    <ClInclude Include="src\Hydrogen\Layers\LayerStack.hpp">
-      <Filter>src\Hydrogen\Layers</Filter>
+    <ClInclude Include="src\Engine\Layers\Layer.hpp">
+      <Filter>src\Engine\Layers</Filter>
     </ClInclude>
-    <ClInclude Include="src\Hydrogen\Utils\Logger.hpp">
-      <Filter>src\Hydrogen\Utils</Filter>
+    <ClInclude Include="src\Engine\Layers\LayerStack.hpp">
+      <Filter>src\Engine\Layers</Filter>
     </ClInclude>
-    <ClInclude Include="src\Hydrogen\Window.hpp">
-      <Filter>src\Hydrogen</Filter>
+    <ClInclude Include="src\Engine\Utils\Logger.hpp">
+      <Filter>src\Engine\Utils</Filter>
     </ClInclude>
-    <ClInclude Include="src\ImGui\ImGuiLayer.hpp">
-      <Filter>src\ImGui</Filter>
+    <ClInclude Include="src\Engine\Window.hpp">
+      <Filter>src\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Engine\pch\pch.hpp">
+      <Filter>src\Engine\pch</Filter>
     </ClInclude>
     <ClInclude Include="src\Platform\Windows\Input\WInput.hpp">
       <Filter>src\Platform\Windows\Input</Filter>
     </ClInclude>
     <ClInclude Include="src\Platform\Windows\Window\WWindow.hpp">
       <Filter>src\Platform\Windows\Window</Filter>
-    </ClInclude>
-    <ClInclude Include="src\pch\pch.hpp">
-      <Filter>src\pch</Filter>
     </ClInclude>
     <ClInclude Include="vendor\glm\glm\common.hpp">
       <Filter>vendor\glm\glm</Filter>
@@ -1373,17 +1373,20 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\Hydrogen\Application\Application.cpp">
-      <Filter>src\Hydrogen\Application</Filter>
+    <ClCompile Include="src\Engine\Application\Application.cpp">
+      <Filter>src\Engine\Application</Filter>
     </ClCompile>
-    <ClCompile Include="src\Hydrogen\Layers\LayerStack.cpp">
-      <Filter>src\Hydrogen\Layers</Filter>
+    <ClCompile Include="src\Engine\ImGui\ImGuiLayer.cpp">
+      <Filter>src\Engine\ImGui</Filter>
     </ClCompile>
-    <ClCompile Include="src\Hydrogen\Utils\Logger.cpp">
-      <Filter>src\Hydrogen\Utils</Filter>
+    <ClCompile Include="src\Engine\Layers\LayerStack.cpp">
+      <Filter>src\Engine\Layers</Filter>
     </ClCompile>
-    <ClCompile Include="src\ImGui\ImGuiLayer.cpp">
-      <Filter>src\ImGui</Filter>
+    <ClCompile Include="src\Engine\Utils\Logger.cpp">
+      <Filter>src\Engine\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Engine\pch\pch.cpp">
+      <Filter>src\Engine\pch</Filter>
     </ClCompile>
     <ClCompile Include="src\Platform\OpenGL\imgui_impl_opengl3.cpp">
       <Filter>src\Platform\OpenGL</Filter>
@@ -1393,9 +1396,6 @@
     </ClCompile>
     <ClCompile Include="src\Platform\Windows\Window\WWindow.cpp">
       <Filter>src\Platform\Windows\Window</Filter>
-    </ClCompile>
-    <ClCompile Include="src\pch\pch.cpp">
-      <Filter>src\pch</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

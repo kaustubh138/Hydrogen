@@ -1,7 +1,7 @@
-#include "Hydrogen/Hydrogen.hpp"
-#include "Hydrogen/Layers/Layer.hpp"
+#include "Engine/Hydrogen.hpp"
+#include "Engine/Layers/Layer.hpp"
 
-#include "ImGui/ImGuiLayer.hpp"
+#include "Engine/ImGui/ImGuiLayer.hpp"
 
 class ExampleLayer
 	: public Hydrogen::Layer
