@@ -12,6 +12,7 @@
 
 #include "glad/glad.h"
 #include "GLFW/glfw3.h"
+#include "Platform/OpenGL/OpenGLContext.hpp"
 
 
 namespace Hydrogen
@@ -26,12 +27,6 @@ namespace Hydrogen
 	WWindow::WWindow(const WindowProps& props)
 	{
 		Init(props);
-	}
-
-	bool WWindow::initGLloader()
-	{
-		int success = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
-		return (success == 1);
 	}
 
 	void WWindow::Init(const WindowProps& props)
@@ -49,11 +44,10 @@ namespace Hydrogen
 		}
 		
 		m_Window = glfwCreateWindow(static_cast<int>(m_Data.Width), static_cast<int>(m_Data.Height), m_Data.Title.c_str(), nullptr, nullptr);
-		glfwMakeContextCurrent(m_Window);
+		m_Context = std::make_unique<OpenGLContext>(m_Window);
+		m_Context->Init();
+		
 		glfwSetWindowUserPointer(m_Window, &m_Data);
-
-		bool glLoaderStatus = initGLloader();
-		H2_CORE_ASSERT(glLoaderStatus, "Failed to initialize GLAD");
 
 		SetVSync(true);
 		SetGLFWCallbacks();

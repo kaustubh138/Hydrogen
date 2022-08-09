@@ -76,7 +76,7 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.hpp</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>IMGUI_API=__declspec(dllexport);_CRT_SECURE_NO_WARNINGS;H2_PLATFORM_WINDOWS;H2_BUILD_DLL;H2_ENABLE_ASSERTS;H2_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>IMGUI_API=__declspec(dllexport);H2_PLATFORM_WINDOWS;H2_BUILD_DLL;H2_ENABLE_ASSERTS;H2_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>vendor\spdlog\include;src;src\Engine;src\Engine\Platform;src\Engine\pch;vendor\GLFW\include;vendor\Glad\include;vendor\ImGUI;vendor\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
@@ -96,7 +96,7 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.hpp</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>IMGUI_API=__declspec(dllexport);_CRT_SECURE_NO_WARNINGS;H2_PLATFORM_WINDOWS;H2_BUILD_DLL;H2_ENABLE_ASSERTS;H2_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>IMGUI_API=__declspec(dllexport);H2_PLATFORM_WINDOWS;H2_BUILD_DLL;H2_ENABLE_ASSERTS;H2_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>vendor\spdlog\include;src;src\Engine;src\Engine\Platform;src\Engine\pch;vendor\GLFW\include;vendor\Glad\include;vendor\ImGUI;vendor\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
@@ -120,7 +120,7 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.hpp</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>IMGUI_API=__declspec(dllexport);_CRT_SECURE_NO_WARNINGS;H2_PLATFORM_WINDOWS;H2_BUILD_DLL;H2_ENABLE_ASSERTS;H2_DIST;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>IMGUI_API=__declspec(dllexport);H2_PLATFORM_WINDOWS;H2_BUILD_DLL;H2_ENABLE_ASSERTS;H2_DIST;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>vendor\spdlog\include;src;src\Engine;src\Engine\Platform;src\Engine\pch;vendor\GLFW\include;vendor\Glad\include;vendor\ImGUI;vendor\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
@@ -155,9 +155,11 @@
     <ClInclude Include="src\Engine\Input\MouseCodes.hpp" />
     <ClInclude Include="src\Engine\Layers\Layer.hpp" />
     <ClInclude Include="src\Engine\Layers\LayerStack.hpp" />
+    <ClInclude Include="src\Engine\Renderer\GraphicsContext.hpp" />
     <ClInclude Include="src\Engine\Utils\Logger.hpp" />
     <ClInclude Include="src\Engine\Window.hpp" />
     <ClInclude Include="src\Engine\pch\pch.hpp" />
+    <ClInclude Include="src\Platform\OpenGL\OpenGLContext.hpp" />
     <ClInclude Include="src\Platform\Windows\Input\WInput.hpp" />
     <ClInclude Include="src\Platform\Windows\Window\WWindow.hpp" />
     <ClInclude Include="vendor\glm\glm\common.hpp" />
@@ -578,13 +580,15 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Engine\Application\Application.cpp" />
+    <ClCompile Include="src\Engine\ImGui\ImGuiBuild.cpp" />
     <ClCompile Include="src\Engine\ImGui\ImGuiLayer.cpp" />
     <ClCompile Include="src\Engine\Layers\LayerStack.cpp" />
+    <ClCompile Include="src\Engine\Renderer\GraphicsContext.cpp" />
     <ClCompile Include="src\Engine\Utils\Logger.cpp" />
     <ClCompile Include="src\Engine\pch\pch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="src\Platform\OpenGL\imgui_impl_opengl3.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\OpenGLContext.cpp" />
     <ClCompile Include="src\Platform\Windows\Input\WInput.cpp" />
     <ClCompile Include="src\Platform\Windows\Window\WWindow.cpp" />
   </ItemGroup>

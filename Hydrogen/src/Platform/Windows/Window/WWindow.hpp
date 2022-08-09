@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Engine/Window.hpp"
+#include "Renderer/GraphicsContext.hpp"
 
 struct GLFWwindow;
 
@@ -25,6 +26,7 @@ namespace Hydrogen
 	private:
 		WindowData m_Data;
 		GLFWwindow* m_Window;
+		std::unique_ptr<GraphicsContext> m_Context;
 
 	private:
 		void SetGLFWCallbacks();
