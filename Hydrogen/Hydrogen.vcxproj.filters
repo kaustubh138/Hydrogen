@@ -1383,6 +1383,8 @@
     <ClInclude Include="vendor\glm\glm\vector_relational.hpp">
       <Filter>vendor\glm\glm</Filter>
     </ClInclude>
+    <ClInclude Include="src\Engine\Renderer\Shader\Shader.hpp" />
+    <ClInclude Include="src\Engine\Utils\File.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Engine\Application\Application.cpp">
@@ -1413,5 +1415,10 @@
       <Filter>src\Platform\Windows\Window</Filter>
     </ClCompile>
     <ClCompile Include="src\Engine\ImGui\ImGuiBuild.cpp" />
+    <ClCompile Include="src\Engine\Renderer\Shader\Shader.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="res\Shaders\vertex_shader.glsl" />
+    <None Include="res\Shaders\fragment_shader.glsl" />
   </ItemGroup>
 </Project>

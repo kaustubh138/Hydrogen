@@ -7,6 +7,8 @@
 #include "Engine/Window.hpp"
 #include "Layers/LayerStack.hpp"
 
+#include "Renderer/Shader/Shader.hpp"
+
 namespace Hydrogen
 {
 	class H2_API Application
@@ -17,6 +19,9 @@ namespace Hydrogen
 		std::unique_ptr<Window> m_Window;
 		LayerStack m_LayerStack;
 		bool m_Running = true;
+
+		unsigned int m_VertexArray, m_VertexBuffer, m_IndexBuffer;
+		std::unique_ptr<Shader> m_Shader;
 
 	private:
 		bool OnWindowClose(Events::WindowCloseEvent& e);
