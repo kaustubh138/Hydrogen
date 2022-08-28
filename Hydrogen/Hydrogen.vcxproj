@@ -73,10 +73,10 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
-      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeader>Create</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.hpp</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>IMGUI_API=__declspec(dllexport);H2_PLATFORM_WINDOWS;H2_BUILD_DLL;H2_ENABLE_ASSERTS;H2_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>IMGUI_API=__declspec(dllexport);_CRT_SECURE_NO_WARNINGS;H2_PLATFORM_WINDOWS;H2_BUILD_DLL;H2_ENABLE_ASSERTS;H2_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>vendor\spdlog\include;src;src\Engine;src\Engine\Platform;src\Engine\pch;vendor\GLFW\include;vendor\Glad\include;vendor\ImGUI;vendor\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
@@ -93,10 +93,10 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
-      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeader>Create</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.hpp</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>IMGUI_API=__declspec(dllexport);H2_PLATFORM_WINDOWS;H2_BUILD_DLL;H2_ENABLE_ASSERTS;H2_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>IMGUI_API=__declspec(dllexport);_CRT_SECURE_NO_WARNINGS;H2_PLATFORM_WINDOWS;H2_BUILD_DLL;H2_ENABLE_ASSERTS;H2_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>vendor\spdlog\include;src;src\Engine;src\Engine\Platform;src\Engine\pch;vendor\GLFW\include;vendor\Glad\include;vendor\ImGUI;vendor\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
@@ -117,10 +117,10 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Dist|x64'">
     <ClCompile>
-      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeader>Create</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.hpp</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>IMGUI_API=__declspec(dllexport);H2_PLATFORM_WINDOWS;H2_BUILD_DLL;H2_ENABLE_ASSERTS;H2_DIST;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>IMGUI_API=__declspec(dllexport);_CRT_SECURE_NO_WARNINGS;H2_PLATFORM_WINDOWS;H2_BUILD_DLL;H2_ENABLE_ASSERTS;H2_DIST;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>vendor\spdlog\include;src;src\Engine;src\Engine\Platform;src\Engine\pch;vendor\GLFW\include;vendor\Glad\include;vendor\ImGUI;vendor\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
@@ -155,12 +155,15 @@
     <ClInclude Include="src\Engine\Input\MouseCodes.hpp" />
     <ClInclude Include="src\Engine\Layers\Layer.hpp" />
     <ClInclude Include="src\Engine\Layers\LayerStack.hpp" />
+    <ClInclude Include="src\Engine\Renderer\Buffer.hpp" />
     <ClInclude Include="src\Engine\Renderer\GraphicsContext.hpp" />
+    <ClInclude Include="src\Engine\Renderer\Renderer.hpp" />
     <ClInclude Include="src\Engine\Renderer\Shader\Shader.hpp" />
     <ClInclude Include="src\Engine\Utils\File.hpp" />
     <ClInclude Include="src\Engine\Utils\Logger.hpp" />
     <ClInclude Include="src\Engine\Window.hpp" />
     <ClInclude Include="src\Engine\pch\pch.hpp" />
+    <ClInclude Include="src\Platform\OpenGL\OpenGLBuffer.hpp" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLContext.hpp" />
     <ClInclude Include="src\Platform\Windows\Input\WInput.hpp" />
     <ClInclude Include="src\Platform\Windows\Window\WWindow.hpp" />
@@ -585,12 +588,15 @@
     <ClCompile Include="src\Engine\ImGui\ImGuiBuild.cpp" />
     <ClCompile Include="src\Engine\ImGui\ImGuiLayer.cpp" />
     <ClCompile Include="src\Engine\Layers\LayerStack.cpp" />
+    <ClCompile Include="src\Engine\Renderer\Buffer.cpp" />
     <ClCompile Include="src\Engine\Renderer\GraphicsContext.cpp" />
+    <ClCompile Include="src\Engine\Renderer\Renderer.cpp" />
     <ClCompile Include="src\Engine\Renderer\Shader\Shader.cpp" />
     <ClCompile Include="src\Engine\Utils\Logger.cpp" />
     <ClCompile Include="src\Engine\pch\pch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLContext.cpp" />
     <ClCompile Include="src\Platform\Windows\Input\WInput.cpp" />
     <ClCompile Include="src\Platform\Windows\Window\WWindow.cpp" />
@@ -605,10 +611,6 @@
     <ProjectReference Include="vendor\ImGUI\ImGui.vcxproj">
       <Project>{C0FF640D-2C14-8DBE-F595-301E616989EF}</Project>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="res\Shaders\fragment_shader.glsl" />
-    <None Include="res\Shaders\vertex_shader.glsl" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

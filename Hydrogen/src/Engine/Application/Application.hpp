@@ -6,6 +6,7 @@
 #include "Engine/Events/WindowEvent.hpp"
 #include "Engine/Window.hpp"
 #include "Layers/LayerStack.hpp"
+#include "Engine/Renderer/Buffer.hpp"
 
 #include "Renderer/Shader/Shader.hpp"
 
@@ -20,7 +21,9 @@ namespace Hydrogen
 		LayerStack m_LayerStack;
 		bool m_Running = true;
 
-		unsigned int m_VertexArray, m_VertexBuffer, m_IndexBuffer;
+		unsigned int m_VertexArray;
+		std::unique_ptr<VertexBuffer> m_VertexBuffer;
+		std::unique_ptr<IndexBuffer> m_IndexBuffer;
 		std::unique_ptr<Shader> m_Shader;
 
 	private:

@@ -25,6 +25,9 @@
     <Filter Include="src\Engine\Renderer">
       <UniqueIdentifier>{F838018B-649A-DE98-ED07-254B59681558}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\Engine\Renderer\Shader">
+      <UniqueIdentifier>{9EA15631-8AB1-0202-F36A-6720DF99F19A}</UniqueIdentifier>
+    </Filter>
     <Filter Include="src\Engine\Utils">
       <UniqueIdentifier>{F2A765A9-DEA0-84FB-07D3-6980F32A6407}</UniqueIdentifier>
     </Filter>
@@ -36,9 +39,6 @@
     </Filter>
     <Filter Include="src\Platform\OpenGL">
       <UniqueIdentifier>{35A49437-A105-7245-2A73-B8F796D3A804}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\Platform\OpenGL\ImGuiImpl">
-      <UniqueIdentifier>{D10A40C0-3D23-27EA-06D0-B68372A7BB83}</UniqueIdentifier>
     </Filter>
     <Filter Include="src\Platform\Windows">
       <UniqueIdentifier>{5B054582-4794-CE4B-F0B2-E246DC20DFF1}</UniqueIdentifier>
@@ -117,8 +117,20 @@
     <ClInclude Include="src\Engine\Layers\LayerStack.hpp">
       <Filter>src\Engine\Layers</Filter>
     </ClInclude>
+    <ClInclude Include="src\Engine\Renderer\Buffer.hpp">
+      <Filter>src\Engine\Renderer</Filter>
+    </ClInclude>
     <ClInclude Include="src\Engine\Renderer\GraphicsContext.hpp">
       <Filter>src\Engine\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Engine\Renderer\Renderer.hpp">
+      <Filter>src\Engine\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Engine\Renderer\Shader\Shader.hpp">
+      <Filter>src\Engine\Renderer\Shader</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Engine\Utils\File.hpp">
+      <Filter>src\Engine\Utils</Filter>
     </ClInclude>
     <ClInclude Include="src\Engine\Utils\Logger.hpp">
       <Filter>src\Engine\Utils</Filter>
@@ -128,6 +140,9 @@
     </ClInclude>
     <ClInclude Include="src\Engine\pch\pch.hpp">
       <Filter>src\Engine\pch</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\OpenGL\OpenGLBuffer.hpp">
+      <Filter>src\Platform\OpenGL</Filter>
     </ClInclude>
     <ClInclude Include="src\Platform\OpenGL\OpenGLContext.hpp">
       <Filter>src\Platform\OpenGL</Filter>
@@ -1383,12 +1398,13 @@
     <ClInclude Include="vendor\glm\glm\vector_relational.hpp">
       <Filter>vendor\glm\glm</Filter>
     </ClInclude>
-    <ClInclude Include="src\Engine\Renderer\Shader\Shader.hpp" />
-    <ClInclude Include="src\Engine\Utils\File.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Engine\Application\Application.cpp">
       <Filter>src\Engine\Application</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Engine\ImGui\ImGuiBuild.cpp">
+      <Filter>src\Engine\ImGui</Filter>
     </ClCompile>
     <ClCompile Include="src\Engine\ImGui\ImGuiLayer.cpp">
       <Filter>src\Engine\ImGui</Filter>
@@ -1396,14 +1412,23 @@
     <ClCompile Include="src\Engine\Layers\LayerStack.cpp">
       <Filter>src\Engine\Layers</Filter>
     </ClCompile>
+    <ClCompile Include="src\Engine\Renderer\Buffer.cpp">
+      <Filter>src\Engine\Renderer</Filter>
+    </ClCompile>
     <ClCompile Include="src\Engine\Renderer\GraphicsContext.cpp">
       <Filter>src\Engine\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Engine\Renderer\Shader\Shader.cpp">
+      <Filter>src\Engine\Renderer\Shader</Filter>
     </ClCompile>
     <ClCompile Include="src\Engine\Utils\Logger.cpp">
       <Filter>src\Engine\Utils</Filter>
     </ClCompile>
     <ClCompile Include="src\Engine\pch\pch.cpp">
       <Filter>src\Engine\pch</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp">
+      <Filter>src\Platform\OpenGL</Filter>
     </ClCompile>
     <ClCompile Include="src\Platform\OpenGL\OpenGLContext.cpp">
       <Filter>src\Platform\OpenGL</Filter>
@@ -1414,11 +1439,6 @@
     <ClCompile Include="src\Platform\Windows\Window\WWindow.cpp">
       <Filter>src\Platform\Windows\Window</Filter>
     </ClCompile>
-    <ClCompile Include="src\Engine\ImGui\ImGuiBuild.cpp" />
-    <ClCompile Include="src\Engine\Renderer\Shader\Shader.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="res\Shaders\vertex_shader.glsl" />
-    <None Include="res\Shaders\fragment_shader.glsl" />
+    <ClCompile Include="src\Engine\Renderer\Renderer.cpp" />
   </ItemGroup>
 </Project>
