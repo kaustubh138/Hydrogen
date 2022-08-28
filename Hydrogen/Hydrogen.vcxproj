@@ -158,6 +158,7 @@
     <ClInclude Include="src\Engine\Renderer\Buffer.hpp" />
     <ClInclude Include="src\Engine\Renderer\GraphicsContext.hpp" />
     <ClInclude Include="src\Engine\Renderer\Renderer.hpp" />
+    <ClInclude Include="src\Engine\Renderer\ShaderDataType.hpp" />
     <ClInclude Include="src\Engine\Renderer\Shader\Shader.hpp" />
     <ClInclude Include="src\Engine\Utils\File.hpp" />
     <ClInclude Include="src\Engine\Utils\Logger.hpp" />

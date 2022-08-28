@@ -38,10 +38,20 @@ namespace Hydrogen
 
 		m_VertexBuffer.reset(VertexBuffer::Create(vertices, sizeof(vertices)));
 		
-
-		glEnableVertexAttribArray(0);
-		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), nullptr);
-
+		{
+			BufferLayout layout = {
+				{ShaderDataType::Float3, "a_Position"}
+			};
+			m_VertexBuffer->SetLayout(BufferLayout(layout));
+		}
+	
+		std::size_t index = 0;
+		const auto& layout = m_VertexBuffer->GetLayout();
+		for (const auto& e : layout)
+		{
+			glEnableVertexAttribArray(index);
+			glVertexAttribPointer(index++, e.GetComponentCount(), GL_FLOAT, e.Normalized, layout.GetStride(), (const void*)e.Offset);
+		}
 		//glGenBuffers(1, &m_IndexBuffer);
 		//glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_IndexBuffer);
 
