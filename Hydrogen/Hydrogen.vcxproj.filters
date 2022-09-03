@@ -1399,6 +1399,9 @@
       <Filter>vendor\glm\glm</Filter>
     </ClInclude>
     <ClInclude Include="src\Engine\Renderer\ShaderDataType.hpp" />
+    <ClInclude Include="src\Engine\Renderer\VertexArray.hpp" />
+    <ClInclude Include="src\Platform\OpenGL\OpenGLVertexArray.hpp" />
+    <ClInclude Include="src\Platform\OpenGL\OpenGLTypeConversion.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Engine\Application\Application.cpp">
@@ -1441,5 +1444,7 @@
       <Filter>src\Platform\Windows\Window</Filter>
     </ClCompile>
     <ClCompile Include="src\Engine\Renderer\Renderer.cpp" />
+    <ClCompile Include="src\Engine\Renderer\VertexArray.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\OpenGLVertexArray.cpp" />
   </ItemGroup>
 </Project>

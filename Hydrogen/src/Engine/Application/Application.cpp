@@ -22,11 +22,7 @@ namespace Hydrogen
 		m_Window->SetEventCallback(std::bind(&Application::OnEvent, this, std::placeholders::_1));
 		
 		/*------Starter Code---------------*/
-		glGenVertexArrays(1, &m_VertexArray);
-		glBindVertexArray(m_VertexArray);
-
-		//glGenBuffers(1, &m_VertexBuffer);
-		//glBindBuffer(GL_ARRAY_BUFFER, m_VertexBuffer);
+		m_VertexArray.reset(VertexArray::Create());
 
 		float vertices[3 * 3] = {
 			-0.5f, -0.5f, 0.0f,
@@ -34,31 +30,23 @@ namespace Hydrogen
 			 0.0f,  0.5f, 0.0f
 		};
 
-		//glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
-
-		m_VertexBuffer.reset(VertexBuffer::Create(vertices, sizeof(vertices)));
+		std::shared_ptr<VertexBuffer> vertexBuffer;
+		vertexBuffer.reset(VertexBuffer::Create(vertices, sizeof(vertices)));
 		
 		{
 			BufferLayout layout = {
 				{ShaderDataType::Float3, "a_Position"}
 			};
-			m_VertexBuffer->SetLayout(BufferLayout(layout));
+			vertexBuffer->SetLayout(BufferLayout(layout));
 		}
 	
-		std::size_t index = 0;
-		const auto& layout = m_VertexBuffer->GetLayout();
-		for (const auto& e : layout)
-		{
-			glEnableVertexAttribArray(index);
-			glVertexAttribPointer(index++, e.GetComponentCount(), GL_FLOAT, e.Normalized, layout.GetStride(), (const void*)e.Offset);
-		}
-		//glGenBuffers(1, &m_IndexBuffer);
-		//glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_IndexBuffer);
+		m_VertexArray->AddVertexBuffer(vertexBuffer);
 
 		uint32_t indices[3] = { 0, 1, 2 };
-		//glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
-		m_IndexBuffer.reset(IndexBuffer::Create(indices, sizeof(indices)/sizeof(indices[0])));
-			
+		std::shared_ptr<IndexBuffer> indexBuffer;
+		indexBuffer.reset(IndexBuffer::Create(indices, sizeof(indices)/sizeof(indices[0])));
+		m_VertexArray->SetIndexBuffer(indexBuffer);
+
 		/*--------Starter Code End-----------*/
 		
 		m_Shader.reset(new Shader("../Hydrogen/res/Shaders/vertex_shader.glsl", "../Hydrogen/res/Shaders/fragment_shader.glsl", "Test"));
@@ -103,7 +91,7 @@ namespace Hydrogen
 			glClear(GL_COLOR_BUFFER_BIT);
 
 			m_Shader->Bind();
-			glBindVertexArray(m_VertexArray);
+			m_VertexArray->Bind();
 			glDrawElements(GL_TRIANGLES, 3, GL_UNSIGNED_INT, nullptr);
 
 			for (Layer* l : m_LayerStack)
