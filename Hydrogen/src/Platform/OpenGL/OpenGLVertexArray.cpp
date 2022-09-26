@@ -57,4 +57,9 @@ namespace Hydrogen
 
 		m_IndexBuffer = idx_Buffer;
 	}
+	
+	const std::shared_ptr<IndexBuffer>& OpenGLVertexArray::GetIndexBuffer()
+	{
+		return m_IndexBuffer;
+	}
 }

@@ -1402,6 +1402,9 @@
     <ClInclude Include="src\Engine\Renderer\VertexArray.hpp" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLVertexArray.hpp" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLTypeConversion.hpp" />
+    <ClInclude Include="src\Engine\Renderer\RendererAPI.hpp" />
+    <ClInclude Include="src\Engine\Renderer\RenderCommand.hpp" />
+    <ClInclude Include="src\Platform\OpenGL\OpenGLRendererAPI.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Engine\Application\Application.cpp">
@@ -1446,5 +1449,8 @@
     <ClCompile Include="src\Engine\Renderer\Renderer.cpp" />
     <ClCompile Include="src\Engine\Renderer\VertexArray.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLVertexArray.cpp" />
+    <ClCompile Include="src\Engine\Renderer\RendererAPI.cpp" />
+    <ClCompile Include="src\Engine\Renderer\RenderCommand.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\OpenGLRendererAPI.cpp" />
   </ItemGroup>
 </Project>

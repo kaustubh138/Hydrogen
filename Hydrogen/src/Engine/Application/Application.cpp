@@ -7,7 +7,9 @@
 #include "Engine/Input/Input.hpp"
 #include "Engine/Renderer/Buffer.hpp"
 
-#include "glad/glad.h"
+#include "Renderer/Renderer.hpp"
+#include "Renderer/RenderCommand.hpp"
+
 #include "Engine/Events/MouseEvent.hpp"
 
 namespace Hydrogen
@@ -87,12 +89,15 @@ namespace Hydrogen
 	{
 		while (m_Running)
 		{
-			glClearColor(0.1f, 0.1f, 0.1f, 1);
-			glClear(GL_COLOR_BUFFER_BIT);
-
+			RenderCommand::Clear({ 0.0f, 0.0f, 0.0f, 0.0f });
+			Renderer::BeginScene();
+			
 			m_Shader->Bind();
 			m_VertexArray->Bind();
-			glDrawElements(GL_TRIANGLES, 3, GL_UNSIGNED_INT, nullptr);
+			Renderer::Submit(m_VertexArray);
+	
+
+			Renderer::EndScene();
 
 			for (Layer* l : m_LayerStack)
 				l->OnUpdate();

@@ -16,11 +16,14 @@ namespace Hydrogen
 
 		virtual void AddVertexBuffer(const std::shared_ptr<VertexBuffer>& buffer) override;
 		virtual void SetIndexBuffer(const std::shared_ptr<IndexBuffer>& idx_buffer) override;
+		virtual const std::shared_ptr<IndexBuffer>& GetIndexBuffer() override;
 
 	private:
 		uint32_t m_RendererID;
 		std::vector<std::shared_ptr<VertexBuffer>> m_VertexBuffers;
 		std::shared_ptr<IndexBuffer> m_IndexBuffer;
+
+		// Inherited via VertexArray
 	};
 }
 

@@ -10,13 +10,13 @@ namespace Hydrogen
     {
         switch (Renderer::GetAPI())
         {
-            case RendererAPI::None:
+            case RendererAPI::API::None:
             {
                 H2_CORE_ASSERT(false, "Renderer::None not supported!");
                 return nullptr;
                 break;
             }
-            case RendererAPI::OpenGL:
+            case RendererAPI::API::OpenGL:
             {
                 return new OpenGLVertexBuffer(vertices, size);
                 break;
@@ -34,13 +34,13 @@ namespace Hydrogen
     {
         switch (Renderer::GetAPI())
         {
-            case RendererAPI::None:
+            case RendererAPI::API::None:
             {
                 H2_CORE_ASSERT(false, "Renderer::None not supported!");
                 return nullptr;
                 break;
             }
-            case RendererAPI::OpenGL:
+            case RendererAPI::API::OpenGL:
             {
                 return new OpenGLIndexBuffer(indices, count);
                 break;
