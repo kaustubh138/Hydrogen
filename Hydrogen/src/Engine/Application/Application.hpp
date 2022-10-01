@@ -11,6 +11,8 @@
 
 #include "Renderer/Shader/Shader.hpp"
 
+#include "Renderer/OrthographicCamera.hpp"
+
 namespace Hydrogen
 {
 	class H2_API Application
@@ -24,6 +26,8 @@ namespace Hydrogen
 
 		std::shared_ptr<VertexArray> m_VertexArray;
 		std::shared_ptr<Shader> m_Shader;
+
+		OrthographicCamera m_OrthoCamera;
 
 	private:
 		bool OnWindowClose(Events::WindowCloseEvent& e);

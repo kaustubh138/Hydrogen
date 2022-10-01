@@ -17,6 +17,7 @@ namespace Hydrogen
 	Application* Application::s_Instance = nullptr;
 
 	Application::Application()
+		: m_OrthoCamera(-1.0f, 1.0f, -1.0f, 1.0f)
 	{
 		H2_CORE_ASSERT(!s_Instance, "An application instance already exists");
 		s_Instance = this;
@@ -90,13 +91,14 @@ namespace Hydrogen
 		while (m_Running)
 		{
 			RenderCommand::Clear({ 0.0f, 0.0f, 0.0f, 0.0f });
-			Renderer::BeginScene();
 			
-			m_Shader->Bind();
-			m_VertexArray->Bind();
-			Renderer::Submit(m_VertexArray);
-	
+			Renderer::BeginScene(m_OrthoCamera);
+			m_OrthoCamera.SetPosition({ 0.1f, 0.1f, 0.0f });
+			m_OrthoCamera.SetRotation(45.0f);
 
+			m_VertexArray->Bind();
+			Renderer::Submit(m_VertexArray, m_Shader);
+	
 			Renderer::EndScene();
 
 			for (Layer* l : m_LayerStack)

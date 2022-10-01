@@ -36,7 +36,7 @@ namespace Hydrogen
 
 		inline int GetUniformLocation(const char* name);
 
-		inline unsigned int getProgramID() { return m_ShaderID; };
+		inline unsigned int GetProgramID() { return m_ShaderID; };
 	};
 }
 
