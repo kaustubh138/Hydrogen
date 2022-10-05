@@ -17,42 +17,11 @@ namespace Hydrogen
 	Application* Application::s_Instance = nullptr;
 
 	Application::Application()
-		: m_OrthoCamera(-1.0f, 1.0f, -1.0f, 1.0f)
 	{
 		H2_CORE_ASSERT(!s_Instance, "An application instance already exists");
 		s_Instance = this;
 		m_Window = std::unique_ptr<Window>(Window::Create());
 		m_Window->SetEventCallback(std::bind(&Application::OnEvent, this, std::placeholders::_1));
-		
-		/*------Starter Code---------------*/
-		m_VertexArray.reset(VertexArray::Create());
-
-		float vertices[3 * 3] = {
-			-0.5f, -0.5f, 0.0f,
-			 0.5f, -0.5f, 0.0f,
-			 0.0f,  0.5f, 0.0f
-		};
-
-		std::shared_ptr<VertexBuffer> vertexBuffer;
-		vertexBuffer.reset(VertexBuffer::Create(vertices, sizeof(vertices)));
-		
-		{
-			BufferLayout layout = {
-				{ShaderDataType::Float3, "a_Position"}
-			};
-			vertexBuffer->SetLayout(BufferLayout(layout));
-		}
-	
-		m_VertexArray->AddVertexBuffer(vertexBuffer);
-
-		uint32_t indices[3] = { 0, 1, 2 };
-		std::shared_ptr<IndexBuffer> indexBuffer;
-		indexBuffer.reset(IndexBuffer::Create(indices, sizeof(indices)/sizeof(indices[0])));
-		m_VertexArray->SetIndexBuffer(indexBuffer);
-
-		/*--------Starter Code End-----------*/
-		
-		m_Shader.reset(new Shader("../Hydrogen/res/Shaders/vertex_shader.glsl", "../Hydrogen/res/Shaders/fragment_shader.glsl", "Test"));
 	}
 
 	Application::~Application()
@@ -90,17 +59,6 @@ namespace Hydrogen
 	{
 		while (m_Running)
 		{
-			RenderCommand::Clear({ 0.0f, 0.0f, 0.0f, 0.0f });
-			
-			Renderer::BeginScene(m_OrthoCamera);
-			m_OrthoCamera.SetPosition({ 0.1f, 0.1f, 0.0f });
-			m_OrthoCamera.SetRotation(45.0f);
-
-			m_VertexArray->Bind();
-			Renderer::Submit(m_VertexArray, m_Shader);
-	
-			Renderer::EndScene();
-
 			for (Layer* l : m_LayerStack)
 				l->OnUpdate();
 
