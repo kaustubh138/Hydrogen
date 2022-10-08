@@ -143,6 +143,7 @@
     <ClInclude Include="src\Engine\Renderer\OrthographicCamera.hpp" />
     <ClInclude Include="src\Engine\Renderer\RenderCommand.hpp" />
     <ClInclude Include="src\Engine\Renderer\RendererAPI.hpp" />
+    <ClInclude Include="src\Engine\Timestep.hpp" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLRendererAPI.hpp" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLTypeConversion.hpp" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLVertexArray.hpp" />

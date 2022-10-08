@@ -11,6 +11,7 @@
 #include "Renderer/RenderCommand.hpp"
 
 #include "Engine/Events/MouseEvent.hpp"
+#include <GLFW/glfw3.h>
 
 namespace Hydrogen
 {
@@ -59,8 +60,12 @@ namespace Hydrogen
 	{
 		while (m_Running)
 		{
+			float time = (float)glfwGetTime();
+			Timestep timestep = time - m_LastFrameTime;
+			m_LastFrameTime = time;
+
 			for (Layer* l : m_LayerStack)
-				l->OnUpdate();
+				l->OnUpdate(timestep);
 
 			m_Window->OnUpdate();
 		}

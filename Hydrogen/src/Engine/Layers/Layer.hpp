@@ -2,6 +2,7 @@
 
 #include "Engine/Core.hpp"
 #include "Events/Event.hpp"
+#include "Engine/Timestep.hpp"
 
 namespace Hydrogen
 {
@@ -19,7 +20,7 @@ namespace Hydrogen
 
 		virtual void OnAttach() {};
 		virtual void OnDetach() {};
-		virtual void OnUpdate() {};
+		virtual void OnUpdate(Timestep time_step) {};
 		virtual void OnEvent(Events::Event& event) {};
 
 		inline const std::string& GetName() const { return m_DebugName; }

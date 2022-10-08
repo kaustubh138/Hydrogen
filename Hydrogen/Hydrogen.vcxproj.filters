@@ -1406,6 +1406,7 @@
     <ClInclude Include="src\Engine\Renderer\RenderCommand.hpp" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLRendererAPI.hpp" />
     <ClInclude Include="src\Engine\Renderer\OrthographicCamera.hpp" />
+    <ClInclude Include="src\Engine\Timestep.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Engine\Application\Application.cpp">

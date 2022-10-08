@@ -1,7 +1,7 @@
 #include "SandboxApplication.hpp"
 
 ExampleLayer::ExampleLayer()
-	: Hydrogen::Layer("Example"), m_OrthoCamera(-1.0f, 1.0f, -1.0f, 1.0f)
+	: Hydrogen::Layer("Example"), m_OrthoCamera(-1.0f, 1.0f, -1.0f, 1.0f), m_CameraPosition(0.0f)
 {
 	m_VertexArray.reset(Hydrogen::VertexArray::Create());
 
@@ -31,13 +31,22 @@ ExampleLayer::ExampleLayer()
 	m_Shader.reset(new Hydrogen::Shader("../Hydrogen/res/Shaders/vertex_shader.glsl", "../Hydrogen/res/Shaders/fragment_shader.glsl", "Test"));
 }
 
-void ExampleLayer::OnUpdate()
+void ExampleLayer::OnUpdate(Hydrogen::Timestep ts)
 {
+	if (Hydrogen::Input::IsKeyPressed(H2_KEY_W))
+		m_CameraPosition.y -= m_CameraSpeed * ts;
+	else if (Hydrogen::Input::IsKeyPressed(H2_KEY_S))
+		m_CameraPosition.y += m_CameraSpeed * ts;
+	if (Hydrogen::Input::IsKeyPressed(H2_KEY_A))
+		m_CameraPosition.x += m_CameraSpeed * ts;
+	else if (Hydrogen::Input::IsKeyPressed(H2_KEY_D))
+		m_CameraPosition.x -= m_CameraSpeed * ts;
+
 	Hydrogen::RenderCommand::Clear({ 0.0f, 0.0f, 0.0f, 0.0f });
 
 	Hydrogen::Renderer::BeginScene(m_OrthoCamera);
-	m_OrthoCamera.SetPosition({ 0.1f, 0.1f, 0.0f });
-	m_OrthoCamera.SetRotation(45.0f);
+	m_OrthoCamera.SetPosition(m_CameraPosition);
+	m_OrthoCamera.SetRotation(0.0f);
 
 	m_VertexArray->Bind();
 	Hydrogen::Renderer::Submit(m_VertexArray, m_Shader);
@@ -47,13 +56,7 @@ void ExampleLayer::OnUpdate()
 
 void ExampleLayer::OnEvent(Hydrogen::Events::Event& e)
 {
-	if (e.GetEventType() == Hydrogen::Events::EventType::KeyPressed)
-	{
-		// Hydrogen::Events::KeyPressed& key_event = static_cast<Hydrogen::Events::KeyPressed&>(e);
-		// if (key_event.GetKeyCode() == H2_KEY_TAB)
-		// 	H2_TRACE("Tab Key Pressed");
-		// H2_TRACE("{0}", (char)key_event.GetKeyCode());
-	}
+	
 }
 
 Sandbox::Sandbox()

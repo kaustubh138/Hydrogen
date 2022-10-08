@@ -2,6 +2,7 @@
 
 #include "Core.hpp"
 
+#include "Timestep.hpp"
 #include "Engine/Events/Event.hpp"
 #include "Engine/Events/WindowEvent.hpp"
 #include "Engine/Window.hpp"
@@ -13,6 +14,7 @@ namespace Hydrogen
 	{
 	private:
 		static Application* s_Instance;
+		float m_LastFrameTime;
 
 		std::unique_ptr<Window> m_Window;
 		LayerStack m_LayerStack;
