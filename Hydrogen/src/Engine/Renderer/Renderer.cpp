@@ -11,10 +11,11 @@ namespace Hydrogen
 		m_SceneData->ViewProjectionMatrix = camera.GetViewProjectionMatrix();
 	}
 
-	void Renderer::Submit(const std::shared_ptr<VertexArray>& va, const std::shared_ptr<Shader>& shader)
+	void Renderer::Submit(const std::shared_ptr<VertexArray>& va, const std::shared_ptr<Shader>& shader, const glm::mat4& transform_matrix)
 	{
 		shader->Bind();
 		shader->SetUniform("u_ViewProjection", m_SceneData->ViewProjectionMatrix);
+		shader->SetUniform("u_Transform", transform_matrix);
 		va->Bind();
 		RenderCommand::DrawIndexed(va);
 	}
