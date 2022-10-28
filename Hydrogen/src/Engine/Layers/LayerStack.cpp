@@ -18,6 +18,7 @@ namespace Hydrogen
 	{
 		m_Layers.emplace(m_Layers.begin() + m_LayerInsertIdx, layer);
 		m_LayerInsertIdx++;
+		layer->OnAttach();
 	}
 
 	void LayerStack::PopLayer(Layer* layer)
@@ -25,6 +26,7 @@ namespace Hydrogen
 		auto it = std::find(m_Layers.begin(), m_Layers.end(), layer);
 		if (it != m_Layers.end())
 		{
+			layer->OnDetach();
 			m_Layers.erase(it);
 			m_LayerInsertIdx--;
 		}
@@ -33,12 +35,16 @@ namespace Hydrogen
 	void LayerStack::PushOverlay(Layer* overlay)
 	{
 		m_Layers.emplace_back(overlay);
+		overlay->OnAttach();
 	}
 
 	void LayerStack::PopOverlay(Layer* overlay)
 	{
 		auto it = std::find(m_Layers.begin(), m_Layers.end(), overlay);
 		if (it != m_Layers.end())
+		{
+			overlay->OnDetach();
 			m_Layers.erase(it);
+		}
 	}	
 }
