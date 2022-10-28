@@ -23,6 +23,9 @@ namespace Hydrogen
 		virtual void OnUpdate(Timestep time_step) {};
 		virtual void OnEvent(Events::Event& event) {};
 
+		// for ImGui
+		virtual void OnImGuiRender() {};
+
 		inline const std::string& GetName() const { return m_DebugName; }
 	};
 }

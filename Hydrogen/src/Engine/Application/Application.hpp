@@ -7,6 +7,7 @@
 #include "Engine/Events/WindowEvent.hpp"
 #include "Engine/Window.hpp"
 #include "Layers/LayerStack.hpp"
+#include "ImGui/ImGuiLayer.hpp"
 
 namespace Hydrogen
 {
@@ -17,6 +18,7 @@ namespace Hydrogen
 		float m_LastFrameTime;
 
 		std::unique_ptr<Window> m_Window;
+		ImGuiLayer* m_ImGuiLayer;
 		LayerStack m_LayerStack;
 		bool m_Running = true;
 

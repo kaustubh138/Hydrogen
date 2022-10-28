@@ -104,7 +104,6 @@ void ExampleLayer::OnEvent(Hydrogen::Events::Event& e)
 Sandbox::Sandbox()
 {
 	PushLayer(new ExampleLayer());
-	PushLayer(new Hydrogen::ImGuiLayer());
 }
 
 Sandbox::~Sandbox()

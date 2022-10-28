@@ -25,21 +25,13 @@ namespace Hydrogen
 		ImGuiLayer();
 		~ImGuiLayer();
 
-		void OnAttach();
-		void OnDetach();
-		void OnUpdate();
-		void OnEvent(Event& event);
+		virtual void OnAttach() override;
+		virtual void OnDetach() override;
 
-	private:
-		// Events
-		bool onMouseButtonPressedEvent(MouseButtonPressed& e);
-		bool onMouseButtonReleasedEvent(MouseButtonReleased& e);
-		bool onMouseMovedEvent(MouseMovedEvent& e);
-		bool onMouseScrolledEvent(MouseScrolledEvent& e);
-		bool onKeyPressedEvent(KeyPressed& e);
-		bool onKeyReleasedEvent(KeyReleased& e);
-		bool onKeyTypedEvent(KeyTyped& e);
-		bool onWindowResizeEvent(WindowResizeEvent& e);
+		virtual void OnImGuiRender() override;
+
+		void Begin();
+		void End();
 	};
 }
 
