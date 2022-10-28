@@ -1,5 +1,10 @@
 #include "SandboxApplication.hpp"
+#include "Engine/Renderer/Shader.hpp"
 #include <glm/gtx/transform.hpp>
+#include <glm/gtc/type_ptr.hpp>
+
+#include "Platform/OpenGL/OpenGLShader.hpp"
+#include "imgui.h"
 
 ExampleLayer::ExampleLayer()
 	: Hydrogen::Layer("Example"), m_OrthoCamera(-1.0f, 1.0f, -1.0f, 1.0f), m_CameraPosition(0.0f)
@@ -35,7 +40,7 @@ void ExampleLayer::setupTraingle()
 	indexBuffer.reset(Hydrogen::IndexBuffer::Create(indices, sizeof(indices) / sizeof(indices[0])));
 	m_TriangleVA->SetIndexBuffer(indexBuffer);
 
-	m_TriangleShader.reset(new Hydrogen::Shader("../Hydrogen/res/Shaders/triangle_vs.glsl", "../Hydrogen/res/Shaders/triangle_fs.glsl", "TriangleTest"));
+	m_TriangleShader.reset(Hydrogen::Shader::Create("../Hydrogen/res/Shaders/triangle_vs.glsl", "../Hydrogen/res/Shaders/triangle_fs.glsl", "TriangleTest"));
 }
 
 void ExampleLayer::setupSqaure()
@@ -61,19 +66,19 @@ void ExampleLayer::setupSqaure()
 	squareIB.reset(Hydrogen::IndexBuffer::Create(squareIndices, sizeof(squareIndices) / sizeof(squareIndices[0])));
 	m_SquareVA->SetIndexBuffer(squareIB);
 	
-	m_SquareShader.reset(new Hydrogen::Shader("../Hydrogen/res/Shaders/square_vs.glsl", "../Hydrogen/res/Shaders/square_fs.glsl", "SqaureTest"));
+	m_SquareShader.reset(Hydrogen::Shader::Create("../Hydrogen/res/Shaders/square_vs.glsl", "../Hydrogen/res/Shaders/square_fs.glsl", "SqaureTest"));
 }
 
 void ExampleLayer::OnUpdate(Hydrogen::Timestep ts)
 {
 	if (Hydrogen::Input::IsKeyPressed(H2_KEY_W))
-		m_CameraPosition.y -= m_CameraSpeed * ts;
-	else if (Hydrogen::Input::IsKeyPressed(H2_KEY_S))
 		m_CameraPosition.y += m_CameraSpeed * ts;
+	else if (Hydrogen::Input::IsKeyPressed(H2_KEY_S))
+		m_CameraPosition.y -= m_CameraSpeed * ts;
 	if (Hydrogen::Input::IsKeyPressed(H2_KEY_A))
-		m_CameraPosition.x += m_CameraSpeed * ts;
-	else if (Hydrogen::Input::IsKeyPressed(H2_KEY_D))
 		m_CameraPosition.x -= m_CameraSpeed * ts;
+	else if (Hydrogen::Input::IsKeyPressed(H2_KEY_D))
+		m_CameraPosition.x += m_CameraSpeed * ts;
 
 	Hydrogen::RenderCommand::Clear({ 0.0f, 0.0f, 0.0f, 0.0f });
 
@@ -82,6 +87,11 @@ void ExampleLayer::OnUpdate(Hydrogen::Timestep ts)
 	m_OrthoCamera.SetRotation(0.0f);
 
 	glm::mat4 scale = glm::scale(glm::mat4(1.0f), glm::vec3(0.1f));
+
+	glm::vec4 redColor(0.0f, 0.0f, 1.0f, 0.0f);
+	glm::vec4 blueColor(1.0f, 0.0f, 0.0f, 0.0f);
+
+	std::dynamic_pointer_cast<Hydrogen::OpenGLShader>(m_SquareShader)->SetUniform("u_Color", m_SquareColor);
 
 	for (int y = 0; y < 20; y++)
 	{
@@ -94,6 +104,13 @@ void ExampleLayer::OnUpdate(Hydrogen::Timestep ts)
 	}
 
 	Hydrogen::Renderer::EndScene();
+}
+
+void ExampleLayer::OnImGuiRender()
+{
+	ImGui::Begin("Settings");
+	ImGui::ColorEdit4("Square Color", glm::value_ptr(m_SquareColor));
+	ImGui::End();
 }
 
 void ExampleLayer::OnEvent(Hydrogen::Events::Event& e)

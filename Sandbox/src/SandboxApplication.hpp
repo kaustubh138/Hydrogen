@@ -7,9 +7,9 @@ class ExampleLayer
 public:
 	ExampleLayer();
 
-	void OnUpdate(Hydrogen::Timestep ts) override;
-
-	void OnEvent(Hydrogen::Events::Event& e) override;
+	virtual void OnUpdate(Hydrogen::Timestep ts) override;
+	virtual void OnEvent(Hydrogen::Events::Event& e) override;
+	virtual void OnImGuiRender() override;
 
 private:
 	std::shared_ptr<Hydrogen::VertexArray> m_TriangleVA;
@@ -21,6 +21,7 @@ private:
 	Hydrogen::OrthographicCamera m_OrthoCamera;
 	glm::vec3 m_CameraPosition;
 	glm::float32 m_CameraSpeed{0.5f};
+	glm::vec4 m_SquareColor{ 0.2f, 0.3f, 0.8f, 0.0f };
 
 private:
 	void setupTraingle();

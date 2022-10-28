@@ -119,7 +119,8 @@ project "Sandbox"
 	{
 		"Hydrogen/vendor/spdlog/include",
 		"Hydrogen/src",
-		"%{IncludeDirs.glm}"
+		"%{IncludeDirs.glm}",
+		"%{IncludeDirs.ImGUI}"
 	}
 
 	links

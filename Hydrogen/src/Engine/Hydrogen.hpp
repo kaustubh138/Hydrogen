@@ -21,7 +21,7 @@
 #include "Engine/Renderer/Buffer.hpp"
 #include "Engine/Renderer/VertexArray.hpp"
 
-#include "Renderer/Shader/Shader.hpp"
+#include "Renderer/Shader.hpp"
 
 #include "Renderer/OrthographicCamera.hpp"
 

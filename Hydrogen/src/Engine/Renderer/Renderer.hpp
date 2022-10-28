@@ -2,7 +2,7 @@
 
 #include "RendererAPI.hpp"
 #include "Renderer/OrthographicCamera.hpp"
-#include "Renderer/Shader/Shader.hpp"
+#include "Renderer/Shader.hpp"
 
 namespace Hydrogen
 {
