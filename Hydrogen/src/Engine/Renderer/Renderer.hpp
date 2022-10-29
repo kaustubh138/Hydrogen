@@ -11,7 +11,7 @@ namespace Hydrogen
 	public:
 		static void BeginScene(OrthographicCamera& camera);
 
-		static void Submit(const std::shared_ptr<VertexArray>& va, const std::shared_ptr<Shader>& shader, const glm::mat4& transform_matrix = glm::mat4(1.0f));
+		static void Submit(const Ref<VertexArray>& va, const Ref<Shader>& shader, const glm::mat4& transform_matrix = glm::mat4(1.0f));
 
 		static void EndScene();
 	
@@ -23,7 +23,7 @@ namespace Hydrogen
 			glm::mat4 ViewProjectionMatrix;
 		};
 	
-		static std::shared_ptr<SceneData> m_SceneData;
+		static Ref<SceneData> m_SceneData;
 	};
 
 }

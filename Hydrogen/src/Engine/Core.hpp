@@ -1,5 +1,7 @@
 #pragma once
 
+#include <memory>
+
 #ifdef H2_PLATFORM_WINDOWS
 #ifdef H2_DYNAMIC_LINK
 	#ifdef H2_BUILD_DLL
@@ -21,3 +23,13 @@
 	#define H2_ASSERT(x, ...)	
 	#define H2_CORE_ASSERT(x, ...)
 #endif
+
+// Hydrogen Types
+namespace Hydrogen
+{
+	template<class T>
+	using Scope = std::unique_ptr<T>;
+	
+	template<class T>
+	using Ref = std::shared_ptr<T>;
+}

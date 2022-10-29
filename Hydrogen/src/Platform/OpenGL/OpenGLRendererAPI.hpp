@@ -10,6 +10,6 @@ namespace Hydrogen
 	public:
 		virtual void Clear(const glm::vec4& color);
 
-		virtual void DrawIndexed(const std::shared_ptr<VertexArray>& va);
+		virtual void DrawIndexed(const Ref<VertexArray>& va);
 	};
 }

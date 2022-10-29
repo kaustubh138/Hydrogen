@@ -26,7 +26,7 @@ namespace Hydrogen
 		glBindVertexArray(0);
 	}
 
-	void OpenGLVertexArray::AddVertexBuffer(const std::shared_ptr<VertexBuffer>& buffer)
+	void OpenGLVertexArray::AddVertexBuffer(const Ref<VertexBuffer>& buffer)
 	{
 		H2_CORE_ASSERT(buffer->GetLayout().GetElements().size(), "Vertex Buffer has no layout!");
 
@@ -50,7 +50,7 @@ namespace Hydrogen
 		m_VertexBuffers.push_back(buffer);
 	}
 
-	void OpenGLVertexArray::SetIndexBuffer(const std::shared_ptr<IndexBuffer>& idx_Buffer)
+	void OpenGLVertexArray::SetIndexBuffer(const Ref<IndexBuffer>& idx_Buffer)
 	{
 		glBindVertexArray(m_RendererID);
 		idx_Buffer->Bind();
@@ -58,7 +58,7 @@ namespace Hydrogen
 		m_IndexBuffer = idx_Buffer;
 	}
 	
-	const std::shared_ptr<IndexBuffer>& OpenGLVertexArray::GetIndexBuffer()
+	const Ref<IndexBuffer>& OpenGLVertexArray::GetIndexBuffer()
 	{
 		return m_IndexBuffer;
 	}

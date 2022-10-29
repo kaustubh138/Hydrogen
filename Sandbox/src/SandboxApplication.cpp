@@ -23,7 +23,7 @@ void ExampleLayer::setupTraingle()
 		0.0f,  0.5f, 0.0f
 	};
 
-	std::shared_ptr<Hydrogen::VertexBuffer> vertexBuffer;
+	Hydrogen::Ref<Hydrogen::VertexBuffer> vertexBuffer;
 	vertexBuffer.reset(Hydrogen::VertexBuffer::Create(vertices, sizeof(vertices)));
 
 	{
@@ -36,7 +36,7 @@ void ExampleLayer::setupTraingle()
 	m_TriangleVA->AddVertexBuffer(vertexBuffer);
 
 	uint32_t indices[3] = { 0, 1, 2 };
-	std::shared_ptr<Hydrogen::IndexBuffer> indexBuffer;
+	Hydrogen::Ref<Hydrogen::IndexBuffer> indexBuffer;
 	indexBuffer.reset(Hydrogen::IndexBuffer::Create(indices, sizeof(indices) / sizeof(indices[0])));
 	m_TriangleVA->SetIndexBuffer(indexBuffer);
 
@@ -54,7 +54,7 @@ void ExampleLayer::setupSqaure()
 		-0.5f,  0.5f, 0.0f
 	};
 
-	std::shared_ptr<Hydrogen::VertexBuffer> squareVB;
+	Hydrogen::Ref<Hydrogen::VertexBuffer> squareVB;
 	squareVB.reset(Hydrogen::VertexBuffer::Create(squareVertices, sizeof(squareVertices)));
 	squareVB->SetLayout({
 		{Hydrogen::ShaderDataType::Float3, "a_Position"}
@@ -62,7 +62,7 @@ void ExampleLayer::setupSqaure()
 	m_SquareVA->AddVertexBuffer(squareVB);
 
 	uint32_t squareIndices[6] = { 0, 1, 2, 2, 3, 0 };
-	std::shared_ptr<Hydrogen::IndexBuffer> squareIB;
+	Hydrogen::Ref<Hydrogen::IndexBuffer> squareIB;
 	squareIB.reset(Hydrogen::IndexBuffer::Create(squareIndices, sizeof(squareIndices) / sizeof(squareIndices[0])));
 	m_SquareVA->SetIndexBuffer(squareIB);
 	

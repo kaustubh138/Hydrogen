@@ -12,11 +12,11 @@ public:
 	virtual void OnImGuiRender() override;
 
 private:
-	std::shared_ptr<Hydrogen::VertexArray> m_TriangleVA;
-	std::shared_ptr<Hydrogen::Shader> m_TriangleShader;
+	Hydrogen::Ref<Hydrogen::VertexArray> m_TriangleVA;
+	Hydrogen::Ref<Hydrogen::Shader> m_TriangleShader;
 	
-	std::shared_ptr<Hydrogen::VertexArray> m_SquareVA;
-	std::shared_ptr<Hydrogen::Shader> m_SquareShader;
+	Hydrogen::Ref<Hydrogen::VertexArray> m_SquareVA;
+	Hydrogen::Ref<Hydrogen::Shader> m_SquareShader;
 
 	Hydrogen::OrthographicCamera m_OrthoCamera;
 	glm::vec3 m_CameraPosition;
