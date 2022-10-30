@@ -35,7 +35,7 @@ namespace Hydrogen
 	{
 		glCreateBuffers(1, &m_RendererID);
 		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_RendererID);
-		glBufferData(GL_ELEMENT_ARRAY_BUFFER, m_Count * sizeof(indices), indices, GL_STATIC_DRAW);
+		glBufferData(GL_ELEMENT_ARRAY_BUFFER, m_Count * sizeof(indices[0]), indices, GL_STATIC_DRAW);
 	}
 	
 	OpenGLIndexBuffer::~OpenGLIndexBuffer()

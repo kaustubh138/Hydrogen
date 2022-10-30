@@ -12,7 +12,7 @@ namespace Hydrogen
 		bool Normalized;
 
 		BufferElement(ShaderDataType type, const std::string& name, bool noramlized = false)
-			: Type(type), Name(name), Size(0), Offset(0), Normalized(noramlized)
+			: Type(type), Name(name), Size(ShaderDataTypeSize(type)), Offset(0), Normalized(noramlized)
 		{}
 	
 		std::size_t GetComponentCount() const;
