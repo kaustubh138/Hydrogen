@@ -23,6 +23,8 @@
 
 #include "Renderer/Shader.hpp"
 
+#include "Renderer/Texture.hpp"
+
 #include "Renderer/OrthographicCamera.hpp"
 
 #include "Engine/Renderer/RenderCommand.hpp"

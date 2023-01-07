@@ -42,9 +42,13 @@ namespace Hydrogen
 			H2_CORE_ASSERT(sucess, "Could not initialize GLFW");
 			s_GLFWInitialized = true;
 		}
+
+		glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
+		glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 5);
+		glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 		
 		m_Window = glfwCreateWindow(static_cast<int>(m_Data.Width), static_cast<int>(m_Data.Height), m_Data.Title.c_str(), nullptr, nullptr);
-		m_Context = std::make_unique<OpenGLContext>(m_Window);
+		m_Context = new OpenGLContext(m_Window);
 		m_Context->Init();
 		
 		glfwSetWindowUserPointer(m_Window, &m_Data);
@@ -154,7 +158,7 @@ namespace Hydrogen
 	void WWindow::OnUpdate()
 	{
 		glfwPollEvents();
-		glfwSwapBuffers(m_Window);
+		m_Context->SwapBuffers();
 	}
 
 	void WWindow::SetVSync(bool enabled)

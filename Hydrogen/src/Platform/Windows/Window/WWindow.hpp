@@ -26,7 +26,7 @@ namespace Hydrogen
 	private:
 		WindowData m_Data;
 		GLFWwindow* m_Window;
-		std::unique_ptr<GraphicsContext> m_Context;
+		GraphicsContext* m_Context;
 
 	private:
 		void SetGLFWCallbacks();

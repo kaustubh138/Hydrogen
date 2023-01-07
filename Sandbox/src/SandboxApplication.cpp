@@ -9,8 +9,40 @@
 ExampleLayer::ExampleLayer()
 	: Hydrogen::Layer("Example"), m_OrthoCamera(-1.0f, 1.0f, -1.0f, 1.0f), m_CameraPosition(0.0f)
 {
+	setupTexture();
 	setupTraingle();
 	setupSqaure();
+}
+
+void ExampleLayer::setupTexture()
+{
+	m_TextureVA.reset(Hydrogen::VertexArray::Create());
+
+	float squareVertices[5 * 4] = {
+		-0.5f, -0.5f, 0.0f, 0.0f, 0.0f,
+		 0.5f, -0.5f, 0.0f, 1.0f, 0.0f,
+		 0.5f,  0.5f, 0.0f, 1.0f, 1.0f,
+		-0.5f,  0.5f, 0.0f, 0.0f, 1.0f
+	};
+
+	Hydrogen::Ref<Hydrogen::VertexBuffer> squareVB;
+	squareVB.reset(Hydrogen::VertexBuffer::Create(squareVertices, sizeof(squareVertices)));
+	squareVB->SetLayout({
+		{Hydrogen::ShaderDataType::Float3, "a_Position"},
+		{Hydrogen::ShaderDataType::Float2, "a_TexCoords"}
+		});
+	m_TextureVA->AddVertexBuffer(squareVB);
+
+	uint32_t squareIndices[6] = { 0, 1, 2, 2, 3, 0 };
+	Hydrogen::Ref<Hydrogen::IndexBuffer> squareIB;
+	squareIB.reset(Hydrogen::IndexBuffer::Create(squareIndices, sizeof(squareIndices) / sizeof(squareIndices[0])));
+	m_TextureVA->SetIndexBuffer(squareIB);
+
+	m_TextureShader.reset(Hydrogen::Shader::Create("../Hydrogen/res/Shaders/texture_vs.glsl", "../Hydrogen/res/Shaders/texture_fs.glsl", "TextureTest"));
+	m_Texture = Hydrogen::Texture2D::Create("assets/Textures/Checkerboard.png", "Texture");
+
+	std::dynamic_pointer_cast<Hydrogen::OpenGLShader>(m_TextureShader)->Bind();
+	std::dynamic_pointer_cast<Hydrogen::OpenGLShader>(m_TextureShader)->SetUniform("u_Texture", 0);
 }
 
 void ExampleLayer::setupTraingle()
@@ -46,7 +78,7 @@ void ExampleLayer::setupTraingle()
 void ExampleLayer::setupSqaure()
 {
 	m_SquareVA.reset(Hydrogen::VertexArray::Create());
-	
+
 	float squareVertices[3 * 4] = {
 		-0.5f, -0.5f, 0.0f,
 		 0.5f, -0.5f, 0.0f,
@@ -58,14 +90,14 @@ void ExampleLayer::setupSqaure()
 	squareVB.reset(Hydrogen::VertexBuffer::Create(squareVertices, sizeof(squareVertices)));
 	squareVB->SetLayout({
 		{Hydrogen::ShaderDataType::Float3, "a_Position"}
-	});
+		});
 	m_SquareVA->AddVertexBuffer(squareVB);
 
 	uint32_t squareIndices[6] = { 0, 1, 2, 2, 3, 0 };
 	Hydrogen::Ref<Hydrogen::IndexBuffer> squareIB;
 	squareIB.reset(Hydrogen::IndexBuffer::Create(squareIndices, sizeof(squareIndices) / sizeof(squareIndices[0])));
 	m_SquareVA->SetIndexBuffer(squareIB);
-	
+
 	m_SquareShader.reset(Hydrogen::Shader::Create("../Hydrogen/res/Shaders/square_vs.glsl", "../Hydrogen/res/Shaders/square_fs.glsl", "SqaureTest"));
 }
 
@@ -91,6 +123,7 @@ void ExampleLayer::OnUpdate(Hydrogen::Timestep ts)
 	glm::vec4 redColor(0.0f, 0.0f, 1.0f, 0.0f);
 	glm::vec4 blueColor(1.0f, 0.0f, 0.0f, 0.0f);
 
+	std::dynamic_pointer_cast<Hydrogen::OpenGLShader>(m_SquareShader)->Bind();
 	std::dynamic_pointer_cast<Hydrogen::OpenGLShader>(m_SquareShader)->SetUniform("u_Color", m_SquareColor);
 
 	for (int y = 0; y < 20; y++)
@@ -102,6 +135,9 @@ void ExampleLayer::OnUpdate(Hydrogen::Timestep ts)
 			Hydrogen::Renderer::Submit(m_SquareVA, m_SquareShader, transform);
 		}
 	}
+
+	m_Texture->Bind();
+	Hydrogen::Renderer::Submit(m_TextureVA, m_TextureShader, glm::scale(glm::mat4(1.0f), glm::vec3(1.5f)));
 
 	Hydrogen::Renderer::EndScene();
 }

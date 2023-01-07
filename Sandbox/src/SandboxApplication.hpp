@@ -18,6 +18,10 @@ private:
 	Hydrogen::Ref<Hydrogen::VertexArray> m_SquareVA;
 	Hydrogen::Ref<Hydrogen::Shader> m_SquareShader;
 
+	Hydrogen::Ref<Hydrogen::Texture2D> m_Texture;
+	Hydrogen::Ref<Hydrogen::VertexArray> m_TextureVA;
+	Hydrogen::Ref<Hydrogen::Shader> m_TextureShader;
+
 	Hydrogen::OrthographicCamera m_OrthoCamera;
 	glm::vec3 m_CameraPosition;
 	glm::float32 m_CameraSpeed{0.5f};
@@ -26,6 +30,7 @@ private:
 private:
 	void setupTraingle();
 	void setupSqaure();
+	void setupTexture();
 };
 
 class Sandbox

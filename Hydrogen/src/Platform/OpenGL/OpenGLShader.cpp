@@ -75,7 +75,7 @@ namespace Hydrogen
 
 	void OpenGLShader::SetUniform(const char* name, int value, unsigned int count)
 	{
-		glUniform1iv(GetUniformLocation(name), count, reinterpret_cast<const GLint*>(value));
+		glUniform1i(GetUniformLocation(name), value);
 	}
 
 	void OpenGLShader::SetUniform(const char* name, const glm::vec2& value)
@@ -105,7 +105,7 @@ namespace Hydrogen
 		if (exist)
 			glUseProgram(m_ShaderID);
 		else
-			H2_CORE_WARN("Attempt to bind a non existsing shader!");
+			H2_CORE_WARN("Attempt to bind a non existing shader! {0}", m_Name);
 	}
 
 	void OpenGLShader::Unbind() const
