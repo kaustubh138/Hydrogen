@@ -19,6 +19,7 @@ private:
 	Hydrogen::Ref<Hydrogen::Shader> m_SquareShader;
 
 	Hydrogen::Ref<Hydrogen::Texture2D> m_Texture;
+	Hydrogen::Ref<Hydrogen::Texture2D> m_LogoTexture;
 	Hydrogen::Ref<Hydrogen::VertexArray> m_TextureVA;
 	Hydrogen::Ref<Hydrogen::Shader> m_TextureShader;
 

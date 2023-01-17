@@ -7,7 +7,7 @@
 #include "imgui.h"
 
 ExampleLayer::ExampleLayer()
-	: Hydrogen::Layer("Example"), m_OrthoCamera(-1.0f, 1.0f, -1.0f, 1.0f), m_CameraPosition(0.0f)
+	: Hydrogen::Layer("Example"), m_OrthoCamera(-1.6f, 1.6f, -0.9f, 0.9f), m_CameraPosition(0.0f)
 {
 	setupTexture();
 	setupTraingle();
@@ -40,6 +40,7 @@ void ExampleLayer::setupTexture()
 
 	m_TextureShader.reset(Hydrogen::Shader::Create("../Hydrogen/res/Shaders/texture_vs.glsl", "../Hydrogen/res/Shaders/texture_fs.glsl", "TextureTest"));
 	m_Texture = Hydrogen::Texture2D::Create("assets/Textures/Checkerboard.png", "Texture");
+	m_LogoTexture = Hydrogen::Texture2D::Create("../Hydrogen/res/logo.png", "LogoTexture");
 
 	std::dynamic_pointer_cast<Hydrogen::OpenGLShader>(m_TextureShader)->Bind();
 	std::dynamic_pointer_cast<Hydrogen::OpenGLShader>(m_TextureShader)->SetUniform("u_Texture", 0);
@@ -79,11 +80,11 @@ void ExampleLayer::setupSqaure()
 {
 	m_SquareVA.reset(Hydrogen::VertexArray::Create());
 
-	float squareVertices[3 * 4] = {
-		-0.5f, -0.5f, 0.0f,
-		 0.5f, -0.5f, 0.0f,
-		 0.5f,  0.5f, 0.0f,
-		-0.5f,  0.5f, 0.0f
+	float squareVertices[5 * 4] = {
+		-0.5f, -0.5f, 0.0f, 0.0f, 0.0f,
+		 0.5f, -0.5f, 0.0f, 1.0f, 0.0f,
+		 0.5f,  0.5f, 0.0f, 1.0f, 1.0f,
+		-0.5f,  0.5f, 0.0f, 0.0f, 1.0f
 	};
 
 	Hydrogen::Ref<Hydrogen::VertexBuffer> squareVB;
@@ -137,6 +138,9 @@ void ExampleLayer::OnUpdate(Hydrogen::Timestep ts)
 	}
 
 	m_Texture->Bind();
+	Hydrogen::Renderer::Submit(m_TextureVA, m_TextureShader, glm::scale(glm::mat4(1.0f), glm::vec3(1.5f)));
+	
+	m_LogoTexture->Bind();
 	Hydrogen::Renderer::Submit(m_TextureVA, m_TextureShader, glm::scale(glm::mat4(1.0f), glm::vec3(1.5f)));
 
 	Hydrogen::Renderer::EndScene();
