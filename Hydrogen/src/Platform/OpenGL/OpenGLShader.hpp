@@ -29,6 +29,7 @@ namespace Hydrogen
 
 		virtual void Bind() const override;
 		virtual void Unbind() const override;
+		virtual std::string GetName() const override { return m_Name; }
 
 		inline int GetUniformLocation(const std::string& name);
 

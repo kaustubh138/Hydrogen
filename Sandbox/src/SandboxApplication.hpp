@@ -12,6 +12,8 @@ public:
 	virtual void OnImGuiRender() override;
 
 private:
+	Hydrogen::ShaderLibrary m_ShaderLib;
+	
 	Hydrogen::Ref<Hydrogen::VertexArray> m_TriangleVA;
 	Hydrogen::Ref<Hydrogen::Shader> m_TriangleShader;
 	
@@ -21,8 +23,7 @@ private:
 	Hydrogen::Ref<Hydrogen::Texture2D> m_Texture;
 	Hydrogen::Ref<Hydrogen::Texture2D> m_LogoTexture;
 	Hydrogen::Ref<Hydrogen::VertexArray> m_TextureVA;
-	Hydrogen::Ref<Hydrogen::Shader> m_TextureShader;
-
+	
 	Hydrogen::OrthographicCamera m_OrthoCamera;
 	glm::vec3 m_CameraPosition;
 	glm::float32 m_CameraSpeed{0.5f};
