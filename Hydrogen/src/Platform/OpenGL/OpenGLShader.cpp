@@ -33,7 +33,7 @@ namespace Hydrogen
 		return shader;
 	}
 
-	unsigned int OpenGLShaderBuilder::CreateShader(const char* vsPath, const char* fsPath)
+	unsigned int OpenGLShaderBuilder::CreateShader(const std::string& vsPath, const std::string& fsPath)
 	{
 		std::string vs = File::Read(vsPath);
 		std::string fs = File::Read(fsPath);
@@ -57,10 +57,23 @@ namespace Hydrogen
 
 	/*Shader*/
 
-	OpenGLShader::OpenGLShader(const char* vsPath, const char* fsPath, const char* name)
+	OpenGLShader::OpenGLShader(const std::string& vsPath, const std::string& fsPath, const std::string& name)
 		: m_PathVS(vsPath), m_PathFS(fsPath), m_Name(name), m_UniformCache()
 	{
 		m_ShaderID = OpenGLShaderBuilder::CreateShader(vsPath, fsPath);
+	}
+
+	OpenGLShader::OpenGLShader(const std::string& vsPath, const std::string& fsPath)
+		: m_PathVS(vsPath), m_PathFS(fsPath), m_UniformCache()
+	{
+		m_ShaderID = OpenGLShaderBuilder::CreateShader(vsPath, fsPath);
+		
+		// if name not specified explicitly take vertex shader file name as shader name
+		auto lastSlash = vsPath.find_last_of("/\\");
+		lastSlash == (lastSlash == std::string::npos) ? 0 : lastSlash + 1; // shader file not in sub-folder
+		auto beforeDot = vsPath.rfind('.');
+		auto charCount = (beforeDot == std::string::npos) ? vsPath.size() - lastSlash : beforeDot - lastSlash; // shader file might not have a extension
+		m_Name = vsPath.substr(lastSlash, charCount);
 	}
 
 	OpenGLShader::~OpenGLShader()
@@ -68,32 +81,32 @@ namespace Hydrogen
 		glDeleteProgram(m_ShaderID);
 	}
 
-	void OpenGLShader::SetUniform(const char* name, float value, unsigned int count)
+	void OpenGLShader::SetUniform(const std::string& name, float value, unsigned int count)
 	{
 		glUniform1fv(GetUniformLocation(name), count, reinterpret_cast<const GLfloat*>(&value));
 	}
 
-	void OpenGLShader::SetUniform(const char* name, int value, unsigned int count)
+	void OpenGLShader::SetUniform(const std::string& name, int value, unsigned int count)
 	{
 		glUniform1i(GetUniformLocation(name), value);
 	}
 
-	void OpenGLShader::SetUniform(const char* name, const glm::vec2& value)
+	void OpenGLShader::SetUniform(const std::string& name, const glm::vec2& value)
 	{
 		glUniform2f(GetUniformLocation(name), value.x, value.y);
 	}
 
-	void OpenGLShader::SetUniform(const char* name, const glm::vec3& value, unsigned int count)
+	void OpenGLShader::SetUniform(const std::string& name, const glm::vec3& value, unsigned int count)
 	{
 		glUniform3f(GetUniformLocation(name), value.x, value.y, value.z);
 	}
 
-	void OpenGLShader::SetUniform(const char* name, const glm::vec4& value, unsigned int count)
+	void OpenGLShader::SetUniform(const std::string& name, const glm::vec4& value, unsigned int count)
 	{
 		glUniform4f(GetUniformLocation(name), value.x, value.y, value.z, value.w);
 	}
 
-	void OpenGLShader::SetUniform(const char* name, const glm::mat4& value, unsigned int count, bool transpose)
+	void OpenGLShader::SetUniform(const std::string& name, const glm::mat4& value, unsigned int count, bool transpose)
 	{
 		glUniformMatrix4fv(GetUniformLocation(name), 1, transpose, glm::value_ptr(value));
 	}
@@ -113,12 +126,12 @@ namespace Hydrogen
 		glUseProgram(0);
 	}
 
-	int OpenGLShader::GetUniformLocation(const char* name)
+	int OpenGLShader::GetUniformLocation(const std::string& name)
 	{
 		if (m_UniformCache.find(name) != m_UniformCache.end())
 			return m_UniformCache[name];
 
-		int location = glGetUniformLocation(m_ShaderID, name);
+		int location = glGetUniformLocation(m_ShaderID, name.c_str());
 		if (location == -1)
 			H2_CORE_WARN("Uniform {0} might not exist!", name);
 

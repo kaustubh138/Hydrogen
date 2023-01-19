@@ -8,7 +8,7 @@ namespace Hydrogen
 	class File
 	{
 	public:
-		static std::string Read(const char* path)
+		static std::string Read(const std::string& path)
 		{
 			std::ifstream stream(path);
 			if (stream)
