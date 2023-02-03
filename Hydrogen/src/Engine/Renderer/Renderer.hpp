@@ -10,6 +10,8 @@ namespace Hydrogen
 	{
 	public:
 		static void Init();
+		
+		static void OnWindowResize(std::size_t width, std::size_t height);
 
 		static void BeginScene(OrthographicCamera& camera);
 

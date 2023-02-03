@@ -49,6 +49,7 @@ namespace Hydrogen
 	{
 		Events::EventDispatcher Dispatcher(e);
 		Dispatcher.Dispatch<Events::WindowCloseEvent>(std::bind(&Application::OnWindowClose, this, std::placeholders::_1));
+		Dispatcher.Dispatch<Events::WindowResizeEvent>(H2_BIND_EVENT_FN(Application::OnWindowResize));
 
 		for (auto it = m_LayerStack.end(); it != m_LayerStack.begin(); )
 		{
@@ -67,8 +68,9 @@ namespace Hydrogen
 			Timestep timestep = time - m_LastFrameTime;
 			m_LastFrameTime = time;
 
-			for (Layer* l : m_LayerStack)
-				l->OnUpdate(timestep);
+			if (!m_Minimized)
+				for (Layer* l : m_LayerStack)
+					l->OnUpdate(timestep);
 
 			m_ImGuiLayer->Begin();
 			for (Layer* layer : m_LayerStack)
@@ -83,5 +85,15 @@ namespace Hydrogen
 	{
 		m_Running = false;
 		return true;
+	}
+	bool Application::OnWindowResize(Events::WindowResizeEvent& e)
+	{
+		if (e.GetWidth() == 0 || e.GetHeight() == 0)
+			m_Minimized = true;
+
+		m_Minimized = false;
+		Renderer::OnWindowResize(e.GetWidth(), e.GetHeight());
+
+		return false;
 	}
 }

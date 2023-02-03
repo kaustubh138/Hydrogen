@@ -13,6 +13,11 @@ namespace Hydrogen
 		RenderCommand::Init();
 	}
 
+	void Renderer::OnWindowResize(std::size_t width, std::size_t height)
+	{
+		RenderCommand::SetViewPort(0, 0, width, height);
+	}
+
 	void Renderer::BeginScene(OrthographicCamera& camera)
 	{
 		m_SceneData->ViewProjectionMatrix = camera.GetViewProjectionMatrix();

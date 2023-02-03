@@ -21,10 +21,12 @@ namespace Hydrogen
 		ImGuiLayer* m_ImGuiLayer;
 		LayerStack m_LayerStack;
 		bool m_Running = true;
+		bool m_Minimized = true;
 
 	private:
 		bool OnWindowClose(Events::WindowCloseEvent& e);
-	
+		bool OnWindowResize(Events::WindowResizeEvent& e);
+
 	public:
 		Application();
 		virtual ~Application();
