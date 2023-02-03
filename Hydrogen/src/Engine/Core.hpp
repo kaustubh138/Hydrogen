@@ -24,6 +24,8 @@
 	#define H2_CORE_ASSERT(x, ...)
 #endif
 
+#define H2_BIND_EVENT_FN(fn) std::bind(&fn, this, std::placeholders::_1)
+
 // Hydrogen Types
 namespace Hydrogen
 {

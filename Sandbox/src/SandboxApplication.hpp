@@ -24,7 +24,7 @@ private:
 	Hydrogen::Ref<Hydrogen::Texture2D> m_LogoTexture;
 	Hydrogen::Ref<Hydrogen::VertexArray> m_TextureVA;
 	
-	Hydrogen::OrthographicCamera m_OrthoCamera;
+	Hydrogen::OrthographicCameraController m_OrthoCameraControl;
 	glm::vec3 m_CameraPosition;
 	glm::float32 m_CameraSpeed{0.5f};
 	glm::vec4 m_SquareColor{ 0.2f, 0.3f, 0.8f, 0.0f };

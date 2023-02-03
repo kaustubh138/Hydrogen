@@ -7,7 +7,7 @@
 #include "imgui.h"
 
 ExampleLayer::ExampleLayer()
-	: Hydrogen::Layer("Example"), m_OrthoCamera(-1.6f, 1.6f, -0.9f, 0.9f), m_CameraPosition(0.0f)
+	: Hydrogen::Layer("Example"), m_OrthoCameraControl(1280.0f/720.0f, true), m_CameraPosition(0.0f)
 {
 	setupTexture();
 	setupTraingle();
@@ -105,6 +105,8 @@ void ExampleLayer::setupSqaure()
 
 void ExampleLayer::OnUpdate(Hydrogen::Timestep ts)
 {
+	m_OrthoCameraControl.OnUpdate(ts);
+	
 	if (Hydrogen::Input::IsKeyPressed(H2_KEY_W))
 		m_CameraPosition.y += m_CameraSpeed * ts;
 	else if (Hydrogen::Input::IsKeyPressed(H2_KEY_S))
@@ -116,10 +118,8 @@ void ExampleLayer::OnUpdate(Hydrogen::Timestep ts)
 
 	Hydrogen::RenderCommand::Clear({ 0.0f, 0.0f, 0.0f, 0.0f });
 
-	Hydrogen::Renderer::BeginScene(m_OrthoCamera);
-	m_OrthoCamera.SetPosition(m_CameraPosition);
-	m_OrthoCamera.SetRotation(0.0f);
-
+	Hydrogen::Renderer::BeginScene(m_OrthoCameraControl.GetCamera());
+	
 	glm::mat4 scale = glm::scale(glm::mat4(1.0f), glm::vec3(0.1f));
 
 	glm::vec4 redColor(0.0f, 0.0f, 1.0f, 0.0f);

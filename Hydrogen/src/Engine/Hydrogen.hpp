@@ -26,6 +26,7 @@
 #include "Renderer/Texture.hpp"
 
 #include "Renderer/OrthographicCamera.hpp"
+#include "Renderer/OrthographicCameraController.hpp"
 
 #include "Engine/Renderer/RenderCommand.hpp"
 #include "Engine/Renderer/Renderer.hpp"

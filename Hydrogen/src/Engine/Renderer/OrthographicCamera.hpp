@@ -18,6 +18,8 @@ namespace Hydrogen
 		void SetRotation(const glm::float32& rotation_degrees) { m_Rotation = rotation_degrees; RecalculateViewMatrix(); }
 		const glm::float32& GetRotation() { return m_Rotation; }
 
+		void SetProjection(float left, float right, float bottom, float top);
+
 		const glm::mat4& GetViewMatrix() { return m_ViewMatrix; }
 		const glm::mat4& GetProjectionMatrix() { return m_ProjectionMatrix; }
 		const glm::mat4& GetViewProjectionMatrix() { return m_ViewProjectionMatrix; }

@@ -1437,6 +1437,7 @@
     <ClInclude Include="vendor\stb_image\stb_image.h">
       <Filter>vendor\stb_image</Filter>
     </ClInclude>
+    <ClInclude Include="src\Engine\Renderer\OrthographicCameraController.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Engine\Application\Application.cpp">
@@ -1511,6 +1512,7 @@
     <ClCompile Include="vendor\stb_image\stb_image.cpp">
       <Filter>vendor\stb_image</Filter>
     </ClCompile>
+    <ClCompile Include="src\Engine\Renderer\OrthographicCameraController.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\logo.png" />
