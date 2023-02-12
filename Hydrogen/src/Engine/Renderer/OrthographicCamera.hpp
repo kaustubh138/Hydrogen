@@ -12,17 +12,17 @@ namespace Hydrogen
 	public:
 		// Getter Setter for Position
 		void SetPosition(const glm::vec3& position) { m_Position = position; RecalculateViewMatrix(); }
-		const glm::vec3& GetPosition() { return m_Position; }
+		const glm::vec3& GetPosition() const { return m_Position; }
 
 		// Getter Setter for Rotation
 		void SetRotation(const glm::float32& rotation_degrees) { m_Rotation = rotation_degrees; RecalculateViewMatrix(); }
-		const glm::float32& GetRotation() { return m_Rotation; }
+		const glm::float32& GetRotation() const { return m_Rotation; }
 
 		void SetProjection(float left, float right, float bottom, float top);
 
-		const glm::mat4& GetViewMatrix() { return m_ViewMatrix; }
-		const glm::mat4& GetProjectionMatrix() { return m_ProjectionMatrix; }
-		const glm::mat4& GetViewProjectionMatrix() { return m_ViewProjectionMatrix; }
+		const glm::mat4& GetViewMatrix() const { return m_ViewMatrix; }
+		const glm::mat4& GetProjectionMatrix() const { return m_ProjectionMatrix; }
+		const glm::mat4& GetViewProjectionMatrix() const { return m_ViewProjectionMatrix; }
 
 	private: 
 		void RecalculateViewMatrix();

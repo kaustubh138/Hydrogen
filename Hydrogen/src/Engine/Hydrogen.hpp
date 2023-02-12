@@ -31,8 +31,5 @@
 #include "Engine/Renderer/RenderCommand.hpp"
 #include "Engine/Renderer/Renderer.hpp"
 
-// Entry Point 
-#include "EntryPoint.hpp"
-
 // Logger
 #include "Utils/Logger.hpp"

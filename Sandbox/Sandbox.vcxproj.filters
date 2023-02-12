@@ -18,9 +18,12 @@
     <ClCompile Include="src\SandboxApplication.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\Sandbox2D.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\SandboxApplication.hpp">
+    <ClInclude Include="src\Sandbox2D.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

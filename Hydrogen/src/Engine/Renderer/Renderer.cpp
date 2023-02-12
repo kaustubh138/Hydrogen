@@ -1,6 +1,7 @@
 #include "pch.hpp"
 #include "Renderer.hpp"
 #include "RenderCommand.hpp"
+#include "Renderer2D.hpp"
 
 #include "Platform/OpenGL/OpenGLShader.hpp"
 
@@ -11,6 +12,7 @@ namespace Hydrogen
 	void Renderer::Init()
 	{
 		RenderCommand::Init();
+		Renderer2D::Init();
 	}
 
 	void Renderer::OnWindowResize(std::size_t width, std::size_t height)

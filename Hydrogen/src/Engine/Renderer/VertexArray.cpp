@@ -6,27 +6,27 @@
 
 namespace Hydrogen
 {
-    VertexArray* VertexArray::Create()
+    Ref<VertexArray> VertexArray::Create()
     {
         switch (Renderer::GetAPI())
         {
-        case RendererAPI::API::None:
-        {
-            H2_CORE_ASSERT(false, "Renderer::None not supported!");
-            return nullptr;
-            break;
-        }
-        case RendererAPI::API::OpenGL:
-        {
-            return new OpenGLVertexArray();
-            break;
-        }
-        default:
-        {
-            H2_CORE_ASSERT(false, "Unknown Renderer API")
-                return nullptr;
-            break;
-        }
+	        case RendererAPI::API::None:
+	        {
+	            H2_CORE_ASSERT(false, "Renderer::None not supported!");
+	            return nullptr;
+	            break;
+	        }
+	        case RendererAPI::API::OpenGL:
+	        {
+	            return std::make_shared<OpenGLVertexArray>();
+	            break;
+	        }
+	        default:
+	        {
+	            H2_CORE_ASSERT(false, "Unknown Renderer API")
+	                return nullptr;
+	            break;
+	        }
         }
     }
 }
